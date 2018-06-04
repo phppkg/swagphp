@@ -6,12 +6,12 @@
  * Time: 10:41
  */
 
-namespace SwagPhp\Swagger;
+namespace SwagPhp\Schema;
 
 /**
- * Class Info
- * @package SwagPhp\Swagger
+ * Class AbstractSchema
+ * @package SwagPhp\Schema
  */
-class Info
+class AbstractSchema
 {
 }

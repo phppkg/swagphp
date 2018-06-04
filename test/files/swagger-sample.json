@@ -1,0 +1,356 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "UEM - User extension information module for social APP.",
+        "license": {
+            "name": "MIT"
+        },
+        "version": "1.0.0"
+    },
+    "host": "api-uem.dev",
+    "basePath": "/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/user/follow": {
+            "get": {
+                "tags": [
+                    "user.follow"
+                ],
+                "summary": "user follow - get follow list",
+                "description": "`code in here`",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/page_index_in_query"
+                    },
+                    {
+                        "$ref": "#/parameters/page_size_in_query"
+                    },
+                    {
+                        "$ref": "#/parameters/fields_in_query"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "the user id",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "$ref": "#/responses/error"
+                    },
+                    "200": {
+                        "description": "The success response data.",
+                        "schema": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/DefaultResponse"
+                                },
+                                {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/UserFollowModel"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user.follow"
+                ],
+                "summary": "user follow - add follow",
+                "parameters": [
+                    {
+                        "name": "userData",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/NewUserFollowModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            }
+        },
+        "/user/followers": {
+            "get": {
+                "tags": [
+                    "user.follow"
+                ],
+                "summary": "user follow - \u5206\u9875\u62c9\u53d6\u6570\u636e\u5217\u8868",
+                "description": "`code in here`",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/page_index_in_query"
+                    },
+                    {
+                        "$ref": "#/parameters/page_size_in_query"
+                    },
+                    {
+                        "$ref": "#/parameters/fields_in_query"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "the user id",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "$ref": "#/responses/error"
+                    },
+                    "200": {
+                        "description": "The success response data.",
+                        "schema": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/DefaultResponse"
+                                },
+                                {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/UserFollowModel"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/user/follow/{id}": {
+            "get": {
+                "tags": [
+                    "user.follow"
+                ],
+                "summary": "user follow - \u6839\u636eID\u62c9\u53d6\u4e00\u6761\u6570\u636e",
+                "description": "`code in here`",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The record ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "$ref": "#/parameters/fields_in_query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The default response data.",
+                        "schema": {
+                            "$ref": "#/definitions/UserFollowModel"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user.follow"
+                ],
+                "summary": "user follow - \u6839\u636eID\u4fee\u6539\u4e00\u6761\u8bb0\u5f55",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/id_in_path"
+                    },
+                    {
+                        "name": "userData",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/NewUserFollowModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user.follow"
+                ],
+                "summary": "user follow - \u6839\u636eID\u5220\u9664\u4e00\u6761\u8bb0\u5f55",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/id_in_path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "UserFollowModel": {
+            "description": "user follow model(Full)",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/NewUserFollowModel"
+                },
+                {
+                    "required": [
+                        "iId"
+                    ],
+                    "properties": {
+                        "iId": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "iStatus": {
+                            "type": "integer",
+                            "format": "int32",
+                            "enum": [
+                                "1",
+                                "2",
+                                "3"
+                            ]
+                        },
+                        "iCreateTime": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            ]
+        },
+        "Error": {
+            "description": "The default Error data model",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "description": "\u9519\u8bef\u7801 \u975e\u96f6(`!= 0`)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "time": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "DefaultResponse": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "description": "\u9519\u8bef\u7801 \u7b49\u4e8e\u96f6`=0`",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "time": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string",
+                    "default": "successful"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        }
+    },
+    "parameters": {
+        "common_in_body": {
+            "name": "common-params",
+            "in": "body",
+            "description": "The common params",
+            "schema": {
+                "$ref": "#/definitions/CommonParams"
+            }
+        },
+        "id_in_path": {
+            "name": "id",
+            "in": "path",
+            "description": "The ID number value",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "fields_in_query": {
+            "name": "fields",
+            "in": "query",
+            "description": "The needed fields, multiple use of `,` separated",
+            "type": "string",
+            "format": "string",
+            "default": "*"
+        }
+    },
+    "responses": {
+        "default": {
+            "description": "The default response data.",
+            "schema": {
+                "$ref": "#/definitions/DefaultResponse"
+            }
+        },
+        "error": {
+            "description": "The error response data. (`code is != 0`)",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            }
+        },
+        "todo": {
+            "description": "This API call has no documentated response (yet)"
+        }
+    },
+    "tags": [
+        {
+            "name": "model",
+            "description": "Operations about model user",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "model.albums",
+            "description": "Operations about model albums APIs"
+        }
+    ]
+}

@@ -98,5 +98,6 @@ class UserController
 
 - swaggo/swag https://github.com/swaggo/swag
 - swagger-php https://github.com/zircote/swagger-php
+- caoym/phpboot https://github.com/caoym/phpboot/tree/master/src/Docgen/Swagger
 - go-swagger https://github.com/go-swagger/go-swagger
 - beego-bee https://github.com/beego/bee
