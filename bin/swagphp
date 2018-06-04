@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+$meta = [
+    'version' => '1.0.0',
+    'name' => 'Swagger docs generator',
+    'rootPath' => dirname(__DIR__),
+    'publishAt' => '2018.06.04',
+];
+
+$app = new \Inhere\Console\Application($meta);
+$app->setLogo('
+      _____                     ____  __
+     / ___/      ______ _____ _/ __ \/ /_  ____
+     \__ \ | /| / / __ `/ __ `/ /_/ / __ \/ __ \
+    ___/ / |/ |/ / /_/ / /_/ / ____/ / / / /_/ /
+   /____/|__/|__/\__,_/\__, /_/   /_/ /_/ .___/
+                      /____/           /_/
+');
+
+$app->registerCommands('SwagPhp\Command', dirname(__DIR__) . '/src/Command');
+
+$app->run();

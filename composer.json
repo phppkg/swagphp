@@ -1,0 +1,51 @@
+{
+  "name": "toolkit/swagphp",
+  "type": "library",
+  "description": "a lite swagger tool, for parse and generate swagger api docs json,yml",
+  "keywords": [
+    "swagger",
+    "swagger-doc",
+    "swagger-php",
+    "apidocs"
+  ],
+  "homepage": "https://github.com/php-toolkit/swagphp",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "inhere",
+      "email": "in.798@qq.com",
+      "homepage": "http://www.yzone.net/"
+    }
+  ],
+  "require": {
+    "php": ">7.0.0",
+    "inhere/console": "dev-master",
+    "inhere/lite-cache": "dev-master",
+    "inhere/php-validate": "~2.0",
+    "toolkit/file-utils": "~1.0",
+    "toolkit/file-parse": "~1.0",
+    "toolkit/collection": "~1.0",
+    "symfony/yaml": "~3.4",
+    "erusev/parsedown": "^1.7"
+  },
+  "require-dev": {
+    "ulue/annotations": "dev-master"
+  },
+  "autoload": {
+    "files": [
+      "src/functions.php"
+    ],
+    "psr-4": {
+      "SwagPhp\\": "src/"
+    }
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  },
+  "config": {
+    "secure-http": false
+  }
+}

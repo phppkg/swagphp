@@ -1,0 +1,854 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "2d578782e84e08ce8d7cf81900e0bc22",
+    "packages": [
+        {
+            "name": "erusev/parsedown",
+            "version": "1.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "92e9c27ba0e74b8b028b111d1b6f956a15c01fc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/erusev/parsedown/92e9c27ba0e74b8b028b111d1b6f956a15c01fc1.zip",
+                "reference": "92e9c27ba0e74b8b028b111d1b6f956a15c01fc1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Parsedown": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "Parser for Markdown.",
+            "homepage": "http://parsedown.org",
+            "keywords": [
+                "markdown",
+                "parser"
+            ],
+            "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "inhere/console",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inhere/php-console.git",
+                "reference": "c9528bee7f5b9c0e85e9e1b963e7000e05271f62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/inhere/php-console/c9528bee7f5b9c0e85e9e1b963e7000e05271f62.zip",
+                "reference": "c9528bee7f5b9c0e85e9e1b963e7000e05271f62",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "toolkit/cli-utils": "~1.0",
+                "toolkit/sys-utils": "~1.0"
+            },
+            "suggest": {
+                "padraic/phar-updater": "A thing to make PHAR self-updating easy and secure.",
+                "symfony/process": "php process operation",
+                "text/template": "Single-Class string template engine for PHP5/7 supporting if/loops/filters"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inhere\\Console\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "a php console library, provide console argument parse, console controller/command run, color style, user interactive, information show.",
+            "homepage": "https://github.com/inhere/php-console",
+            "keywords": [
+                "cli",
+                "command",
+                "command-line",
+                "console",
+                "console-application",
+                "console-color",
+                "library"
+            ],
+            "time": "2018-05-30T13:27:29+00:00"
+        },
+        {
+            "name": "inhere/lite-cache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inhere/php-lite-cache.git",
+                "reference": "1f1c8b38cc82d32b14d58288c055d3abedb09157"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/inhere/php-lite-cache/1f1c8b38cc82d32b14d58288c055d3abedb09157.zip",
+                "reference": "1f1c8b38cc82d32b14d58288c055d3abedb09157",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "psr/simple-cache": "^1.0",
+                "toolkit/data-parser": "^1.0"
+            },
+            "suggest": {
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inhere\\LiteCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "a simple cache client tool library of the php",
+            "homepage": "https://github.com/inhere/php-lite-cache",
+            "keywords": [
+                "library",
+                "memcache",
+                "redis"
+            ],
+            "time": "2018-05-29T16:19:27+00:00"
+        },
+        {
+            "name": "inhere/php-validate",
+            "version": "v2.4.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inhere/php-validate.git",
+                "reference": "48594b8cadf8a06c446b0fe683895c531837d5f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/inhere/php-validate/48594b8cadf8a06c446b0fe683895c531837d5f7.zip",
+                "reference": "48594b8cadf8a06c446b0fe683895c531837d5f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "suggest": {
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inhere\\Validate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "a simple validate, filter library of the php",
+            "homepage": "http://github.com/inhere/php-validate",
+            "keywords": [
+                "library",
+                "validate"
+            ],
+            "time": "2018-04-28T14:31:36+00:00"
+        },
+        {
+            "name": "psr/simple-cache",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-fig/simple-cache/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b.zip",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/symfony/polyfill-ctype/7cc359f1b7b80fc25ed7796be7d96adc9b354bae.zip",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-04-30T19:57:29+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v3.4.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "c5010cc1692ce1fa328b1fb666961eb3d4a85bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/symfony/yaml/c5010cc1692ce1fa328b1fb666961eb3d4a85bb0.zip",
+                "reference": "c5010cc1692ce1fa328b1fb666961eb3d4a85bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/console": "<3.4"
+            },
+            "require-dev": {
+                "symfony/console": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2018-05-03T23:18:14+00:00"
+        },
+        {
+            "name": "toolkit/arr-utils",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/arr-utils.git",
+                "reference": "8adcea4f24c567a54b9ebb7de9f208d232140c04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/arr-utils/8adcea4f24c567a54b9ebb7de9f208d232140c04.zip",
+                "reference": "8adcea4f24c567a54b9ebb7de9f208d232140c04",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool",
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\ArrUtil\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some array tool library of the php",
+            "homepage": "https://github.com/php-toolkit/arr-utils",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-04-22T07:08:45+00:00"
+        },
+        {
+            "name": "toolkit/cli-utils",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/cli-utils.git",
+                "reference": "a59b1e1d9422c44306ae9052b3638c03fbd2ed3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/cli-utils/a59b1e1d9422c44306ae9052b3638c03fbd2ed3a.zip",
+                "reference": "a59b1e1d9422c44306ae9052b3638c03fbd2ed3a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">7.0.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool",
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\Cli\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some cli tool library of the php",
+            "homepage": "https://github.com/php-toolkit/cli-utils",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-05-07T15:32:05+00:00"
+        },
+        {
+            "name": "toolkit/collection",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/collection.git",
+                "reference": "d6d6a4cf0ffb5d5ad43707c8a915ec54f02d5a08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/collection/d6d6a4cf0ffb5d5ad43707c8a915ec54f02d5a08.zip",
+                "reference": "d6d6a4cf0ffb5d5ad43707c8a915ec54f02d5a08",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">7.0.0",
+                "toolkit/arr-utils": "~1.0",
+                "toolkit/file-parse": "~1.0",
+                "toolkit/obj-utils": "~1.0",
+                "toolkit/str-utils": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\Collection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some data collection tool library of the php",
+            "homepage": "https://github.com/php-toolkit/collection",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-04-30T08:03:11+00:00"
+        },
+        {
+            "name": "toolkit/data-parser",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/data-parser.git",
+                "reference": "5a97bcd67826ccb3f01c4544d183ac7169823931"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/data-parser/5a97bcd67826ccb3f01c4544d183ac7169823931.zip",
+                "reference": "5a97bcd67826ccb3f01c4544d183ac7169823931",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">7.0.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool",
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\DataParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some data parser tool library of the php",
+            "homepage": "https://github.com/php-toolkit/data-parser",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-04-30T07:02:41+00:00"
+        },
+        {
+            "name": "toolkit/file-parse",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/file-parse.git",
+                "reference": "abee6ddd0d9c9104722b147f10d33902a63af157"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/file-parse/abee6ddd0d9c9104722b147f10d33902a63af157.zip",
+                "reference": "abee6ddd0d9c9104722b147f10d33902a63af157",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "toolkit/str-utils": "~1.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\File\\Parse\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some file parse tool library of the php",
+            "homepage": "https://github.com/php-toolkit/file-parse",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-04-30T08:03:11+00:00"
+        },
+        {
+            "name": "toolkit/file-utils",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/file-utils.git",
+                "reference": "6568a02f3127f50d787df53f1c14af8df26e65fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/file-utils/6568a02f3127f50d787df53f1c14af8df26e65fd.zip",
+                "reference": "6568a02f3127f50d787df53f1c14af8df26e65fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool",
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\File\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some file tool library of the php",
+            "homepage": "https://github.com/php-toolkit/file-utils",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-04-30T07:40:43+00:00"
+        },
+        {
+            "name": "toolkit/obj-utils",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/obj-utils.git",
+                "reference": "a1049b8c328f2583a7af13233a8273b5dd27e3c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/obj-utils/a1049b8c328f2583a7af13233a8273b5dd27e3c4.zip",
+                "reference": "a1049b8c328f2583a7af13233a8273b5dd27e3c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool",
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\ObjUtil\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some object tool library of the php",
+            "homepage": "https://github.com/php-toolkit/obj-utils",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-04-22T07:08:45+00:00"
+        },
+        {
+            "name": "toolkit/str-utils",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/str-utils.git",
+                "reference": "034c5c336eaff7b3a8fdf9d331644529a45e44ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/str-utils/034c5c336eaff7b3a8fdf9d331644529a45e44ea.zip",
+                "reference": "034c5c336eaff7b3a8fdf9d331644529a45e44ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool",
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\StrUtil\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some string tool library of the php",
+            "homepage": "https://github.com/php-toolkit/str-utils",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-04-22T07:08:45+00:00"
+        },
+        {
+            "name": "toolkit/sys-utils",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-toolkit/sys-utils.git",
+                "reference": "cf0ebbdcc4d3f0a4fc85849b395326e73dbf3e25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/sys-utils/cf0ebbdcc4d3f0a4fc85849b395326e73dbf3e25.zip",
+                "reference": "cf0ebbdcc4d3f0a4fc85849b395326e73dbf3e25",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "suggest": {
+                "inhere/console": "a lightweight php console application library.",
+                "inhere/php-validate": "Very lightweight data validate tool",
+                "inhere/simple-print-tool": "Very lightweight data printing tools"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolkit\\Sys\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "some system tool library of the php",
+            "homepage": "https://github.com/php-toolkit/sys-utils",
+            "keywords": [
+                "library",
+                "php",
+                "tool"
+            ],
+            "time": "2018-05-07T15:13:04+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "ulue/annotations",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ulue/Annotations.git",
+                "reference": "bbf800685bc55600cf5bbb7a17a912cc877bfeee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/ulue/Annotations/bbf800685bc55600cf5bbb7a17a912cc877bfeee.zip",
+                "reference": "bbf800685bc55600cf5bbb7a17a912cc877bfeee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">7.0.0",
+                "toolkit/obj-utils": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ulue\\Annotations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erik Amaru Ortiz",
+                    "email": "aortiz.erik@gmail.com"
+                },
+                {
+                    "name": "inhere",
+                    "email": "in.798@qq.com",
+                    "homepage": "http://www.yzone.net/"
+                }
+            ],
+            "description": "Simple and Lightweight PHP Class & Methods Annotations Reader",
+            "homepage": "https://github.com/ulue/Annotations",
+            "time": "2018-06-03T16:24:26+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "inhere/console": 20,
+        "inhere/lite-cache": 20,
+        "ulue/annotations": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">7.0.0"
+    },
+    "platform-dev": []
+}

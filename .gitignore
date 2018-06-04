@@ -1,0 +1,5 @@
+.idea/
+.phpintel/
+.vscode/
+vendor/
+*.phar
