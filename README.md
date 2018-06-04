@@ -68,7 +68,7 @@ class UserController
  * @APIInfo(
  *     version="1.0.0",
  *     title="user service center",
- *     description="## user service center(`env: {dev}`)
+ *     description="## user service center, `env: {dev}`
  * test"
  * )
  */
