@@ -93,3 +93,10 @@ class UserController
    {}
 }
 ```
+
+## reference
+
+- swaggo/swag https://github.com/swaggo/swag
+- swagger-php https://github.com/zircote/swagger-php
+- go-swagger https://github.com/go-swagger/go-swagger
+- beego-bee https://github.com/beego/bee
