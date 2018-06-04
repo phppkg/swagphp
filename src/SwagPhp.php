@@ -14,7 +14,7 @@ namespace SwagPhp;
  */
 class SwagPhp
 {
-    public static function create(array $config = [])
+    public static function scan(array $config = [])
     {
         return new self($config);
     }

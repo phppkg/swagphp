@@ -2,12 +2,11 @@
 
 a lite swagger tool, for parse and generate swagger api docs json,yml
 
-- simple parse annotation to api docs
+- simple parse annotation to swagger 2.0 api docs
 - support convert swagger.json to markdown/html/pdf files
   - ref https://github.com/Swagger2Markup/swagger2markup
 
 ## annotations
-
 
 ### simple mode
 
@@ -25,10 +24,6 @@ a lite swagger tool, for parse and generate swagger api docs json,yml
  */
 ```
 
-```php
-$swag->addTags('users', 'users.follow', "common");
-```
-
 #### api definition
 
 ```php
@@ -39,16 +34,16 @@ $swag->addTags('users', 'users.follow', "common");
  */
 class UserController 
 {
-  /**
-   * @ApiParam  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION
-   * @ApiParam  userId  path  int  true  "the uesr id"
-   * @ApiParam  userId  query  int  false  "the uesr id"
-   * @ApiParam  bodyData  body  UserModel  true  "the submit form data"
-   * @ApiResponse   200  {object}   []UserModel
-   * @ApiResponse   403   no content
-   */
-   public function indexAction() 
-   {}
+    /**
+     * @ApiParam  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION
+     * @ApiParam  userId  path  int  true  "the uesr id"
+     * @ApiParam  userId  query  int  false  "the uesr id"
+     * @ApiParam  bodyData  body  UserModel  true  "the submit form data"
+     * @ApiResponse   200  {object}   []UserModel
+     * @ApiResponse   403   no content
+     */
+     public function indexAction() 
+     {}
 }
 ```
 
@@ -82,16 +77,27 @@ class UserController
  */
 class UserController 
 {
-  /**
-   * @ApiParam("username", type="string", description="The username", in="header")
-   * @ApiParam(name="userId", type="int", description="The user ID", in="path", required=true)
-   * @ApiParam(name="field1", type="int", description="The field message", in="query")
-   * @ApiResponse(200, type="object", ref="App\Models\User")
-   * @ApiResponse(403, description="no content")
-   */
-   public function indexAction() 
-   {}
+    /**
+     * @ApiParam("username", type="string", description="The username", in="header")
+     * @ApiParam(name="userId", type="int", description="The user ID", in="path", required=true)
+     * @ApiParam(name="field1", type="int", description="The field message", in="query")
+     * @ApiResponse(200, type="object", ref="App\Models\User")
+     * @ApiResponse(403, description="no content")
+     */
+     public function indexAction() 
+     {}
 }
+```
+
+## some 
+
+```php
+$swag->addTag('users', 'some operation for user');
+$swag->addTags([
+  'users' => 'some operation for user', 
+  'users.follow' => 'tag description', 
+  'common' => 'tag description'
+]);
 ```
 
 ## reference
