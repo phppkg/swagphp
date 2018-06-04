@@ -6,9 +6,9 @@ a lite swagger tool, for parse and generate swagger api docs json,yml
 - support convert swagger.json to markdown/html/pdf files
   - ref https://github.com/Swagger2Markup/swagger2markup
 
-## annotations
+## Annotations
 
-### simple mode
+### Simple mode
 
 #### basic info
 
@@ -47,7 +47,7 @@ class UserController
 }
 ```
 
-### detailed mode
+### Detailed mode
 
 #### basic info
 
@@ -89,7 +89,7 @@ class UserController
 }
 ```
 
-## some 
+## Some 
 
 ```php
 $swag->addTag('users', 'some operation for user');
@@ -100,7 +100,15 @@ $swag->addTags([
 ]);
 ```
 
-## reference
+## Development
+
+generate phar package:
+
+```bash
+php -d phar.readonly=0 bin/genphar pack -o swagphp.phar
+```
+
+## Reference
 
 - swaggo/swag https://github.com/swaggo/swag
 - swagger-php https://github.com/zircote/swagger-php
