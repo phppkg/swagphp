@@ -17,8 +17,11 @@
       "homepage": "http://www.yzone.net/"
     }
   ],
+  "config": {
+    "bin-dir": "bin"
+  },
   "require": {
-    "php": ">7.0.0",
+    "php": ">7.1.0",
     "inhere/console": "dev-master",
     "inhere/lite-cache": "dev-master",
     "inhere/php-validate": "~2.0",
@@ -29,7 +32,9 @@
     "erusev/parsedown": "^1.7"
   },
   "require-dev": {
-    "ulue/annotations": "dev-master"
+    "ulue/annotations": "dev-master",
+    "doctrine/annotations": "^1.6",
+    "phpdocumentor/reflection-docblock": "^4.3"
   },
   "autoload": {
     "files": [
@@ -44,8 +49,5 @@
       "type": "composer",
       "url": "https://packagist.phpcomposer.com"
     }
-  },
-  "config": {
-    "secure-http": false
   }
 }

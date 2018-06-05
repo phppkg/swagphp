@@ -6,6 +6,17 @@ a lite swagger tool, for parse and generate swagger api docs json,yml
 - support convert swagger.json to markdown/html/pdf files
   - ref https://github.com/Swagger2Markup/swagger2markup
 
+## Usage
+
+
+### Usage from [docker](https://docker.com)
+
+Generate the swagger documentation to a static json file.
+
+```
+docker run -v "$PWD":/app -it sawgphp/box  swagphp --help
+```
+
 ## Annotations
 
 ### Simple mode
@@ -89,7 +100,15 @@ class UserController
 }
 ```
 
-## Some 
+## Some helper methods
+
+- setting some info 
+
+```php
+$swag->swagger->info->version = '1.2.0';
+```
+
+- pre-add tags
 
 ```php
 $swag->addTag('users', 'some operation for user');
@@ -105,7 +124,7 @@ $swag->addTags([
 generate phar package:
 
 ```bash
-php -d phar.readonly=0 bin/genphar pack -o swagphp.phar
+php -d phar.readonly=0 genphar pack -o swagphp.phar
 ```
 
 ## Reference
@@ -115,3 +134,14 @@ php -d phar.readonly=0 bin/genphar pack -o swagphp.phar
 - caoym/phpboot https://github.com/caoym/phpboot/tree/master/src/Docgen/Swagger
 - go-swagger https://github.com/go-swagger/go-swagger
 - beego-bee https://github.com/beego/bee
+
+### swagger-explained
+
+- https://bfanger.nl/swagger-explained/
+
+### doc-block parse
+
+- `phpdocumentor/reflection-docblock` https://github.com/phpDocumentor/ReflectionDocBlock
+  - support simple mode parse
+- `doctrine/annotations` https://github.com/doctrine/annotations
+  - support detailed mode parse

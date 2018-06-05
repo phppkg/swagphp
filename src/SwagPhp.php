@@ -8,19 +8,86 @@
 
 namespace SwagPhp;
 
+use SwagPhp\Schema\Swagger;
+
 /**
  * Class SwagPhp
  * @package SwagPhp
  */
 class SwagPhp
 {
-    public static function scan(array $config = [])
+    // doc comment format
+    public const SIMPLE = 'simple';
+    public const DETAILED = 'detailed';
+
+    /**
+     * @var array
+     */
+    private $scanDirs;
+
+    /**
+     * @var Swagger
+     */
+    public $swagger;
+
+    /**
+     * @var \SplObjectStorage
+     */
+    public $annotations;
+
+    /**
+     * @param string|array $scanDirs
+     * @param array $options
+     * @return SwagPhp
+     */
+    public static function scan($scanDirs, array $options = []): self
     {
-        return new self($config);
+        return new self($scanDirs, $options);
     }
 
-    public function __construct(array $config = [])
+    /**
+     * SwagPhp constructor.
+     * @param string|array $scanDirs
+     * @param array $options
+     */
+    public function __construct($scanDirs, array $options = [])
     {
-        # code...
+        $this->scanDirs = (array)$scanDirs;
+
+        $this->collectAndParse($options);
+    }
+
+    /**
+     * @param array $options
+     * @return Swagger
+     */
+    protected function collectAndParse(array $options = []): Swagger
+    {
+        $options = \array_merge([
+            'mode' => self::DETAILED,
+        ], $options);
+
+        if ($options['mode'] === self::SIMPLE) {
+            $parser = new SimpleModeParser();
+        } else {
+            $parser = new DetailedModeParser();
+        }
+
+    }
+
+    /**
+     * @return Swagger
+     */
+    public function getSwagger(): Swagger
+    {
+        return $this->swagger;
+    }
+
+    /**
+     * @return array
+     */
+    public function getScanDirs(): array
+    {
+        return $this->scanDirs;
     }
 }

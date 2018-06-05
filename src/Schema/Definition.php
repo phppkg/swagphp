@@ -9,10 +9,10 @@
 namespace SwagPhp\Schema;
 
 /**
- * Class License
+ * Class Definition
  * @package SwagPhp\Schema
  */
-class License extends AbstractSchema
+class Definition extends AbstractSchema
 {
    /**
      * The key into Swagger->definitions array.

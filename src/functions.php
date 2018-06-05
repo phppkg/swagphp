@@ -2,7 +2,7 @@
 
 namespace SwagPhp;
 
-function swagger($value='')
+function scan(array $config = [])
 {
-    # code...
+
 }
