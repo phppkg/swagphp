@@ -51,17 +51,29 @@ docker run -v "$PWD":/app -it sawgphp/box swagphp --help
 
 ```php
 /**
- * @APIVersion 1.0.0
+ * @Version 1.0.0
  * @Title user service center
  * @Description api for user service center
- * @Contact contact@me.com
- * @TermsOfServiceUrl http://github.com/inhere
+ * @Host localhost:8080
+ * @BasePath /v1
+ * @ContactName username
+ * @ContactEmail contact@me.com
+ * @ContactUrl http://github.com/inhere
+ * @TermsOfService http://github.com/inhere
  * @License Apache 2.0
  * @LicenseUrl http://www.apache.org/licenses/LICENSE-2.0.html
  */
 ```
 
-#### api definition
+#### Security
+
+```php
+/**
+ * 
+ */
+```
+
+#### api operations
 
 ```php
 
@@ -72,14 +84,29 @@ docker run -v "$PWD":/app -it sawgphp/box swagphp --help
 class UserController 
 {
     /**
-     * @ApiParam  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION
-     * @ApiParam  userId  path  int  true  "the uesr id"
-     * @ApiParam  userId  query  int  false  "the uesr id"
-     * @ApiParam  bodyData  body  UserModel  true  "the submit form data"
-     * @ApiResponse   200  {object}   []UserModel
-     * @ApiResponse   403   no content
+     * @Summary  summary message
+     * @Description description message
+     * @Parameter  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION  EXTRA...
+     * @Parameter  status  query  int  true  "the uesr id"  enums(1, 2, 3)
+     * @Parameter  userId  path  int  false  "the uesr id" mininum(1) maxinum(10)
+     * @Parameter  name  query  string  false  "the uesr name" minlength(5) maxlength(10)
+     * @Parameter  bodyData  body  UserModel  true  "the submit form data"
+     * @Response   200  {array}   []UserModel
+     * @Response   200  {object}   UserModel
+     * @Response   403   no content
      */
      public function indexAction() 
+     {}
+     
+    /**
+     * summary message
+     * description message
+     * @Parameter  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION  EXTRA...
+     * @Parameter  status  query  int  true  "the uesr id"  
+     * @Response   200  {object}   []UserModel
+     * @Response   403   no content
+     */
+     public function getAction() 
      {}
 }
 ```
@@ -90,14 +117,15 @@ class UserController
 
 ```php
 /**
- * @APIMeta(
+ * // https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#swaggerObject
+ * @Project(
  *     host="api.dev",
  *     basePath="/",
  *     schemes={"http", "https"},
  *     consumes={"application/json"},
  *     produces={"application/json"}
  * )
- * @APIInfo(
+ * @Info(
  *     version="1.0.0",
  *     title="user service center",
  *     description="## user service center, `env: {dev}`
@@ -106,7 +134,7 @@ class UserController
  */
 ```
 
-#### api definition
+#### api operations
 
 ```php
 /**
@@ -115,11 +143,14 @@ class UserController
 class UserController 
 {
     /**
-     * @ApiParam("username", type="string", description="The username", in="header")
-     * @ApiParam(name="userId", type="int", description="The user ID", in="path", required=true)
-     * @ApiParam(name="field1", type="int", description="The field message", in="query")
-     * @ApiResponse(200, type="object", ref="App\Models\User")
-     * @ApiResponse(403, description="no content")
+     * @Description("description message")
+     * @Route(path="/user/index", summary="Post to URL", method="GET")
+     * @Parameter("username", type="string", description="The username", in="header")
+     * @Parameter(name="userId", type="int", description="The user ID", in="path", required=true)
+     * @Parameter(name="field1", type="int", description="The field message", in="query")
+     * @Response(200, type="object", ref="\App\Models\UserModel")
+     * @Response(200, type="array", ref="[]\App\Models\UserModel")
+     * @Response(403, description="no content")
      */
      public function indexAction() 
      {}
@@ -155,6 +186,20 @@ php -d phar.readonly=0 genphar pack -o swagphp.phar
 
 ## Reference
 
+### open api
+
+- github https://github.com/OAI/OpenAPI-Specification
+- V2 https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md
+- V3 https://github.com/OAI/OpenAPI-Specification/blob/v3.0.1/versions/3.0.1.md
+
+### swagger
+
+- example-site http://petstore.swagger.io/
+- example-json http://petstore.swagger.io/v2/swagger.json
+- swagger-ui https://github.com/swagger-api/swagger-ui
+
+### other implement
+
 - swaggo/swag https://github.com/swaggo/swag
 - swagger-php https://github.com/zircote/swagger-php
 - caoym/phpboot https://github.com/caoym/phpboot/tree/master/src/Docgen/Swagger
@@ -171,3 +216,7 @@ php -d phar.readonly=0 genphar pack -o swagphp.phar
   - support simple mode parse
 - `doctrine/annotations` https://github.com/doctrine/annotations
   - support detailed mode parse
+
+## LICENSE
+
+**MIT**

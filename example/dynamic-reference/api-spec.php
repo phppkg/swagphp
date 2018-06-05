@@ -60,9 +60,10 @@ As you can see `ref="$/responses/Json` is telling it to extend the base `Json` r
 We follow the reference with a `Schema` layout which specifies that the `data` property will actually be a `Product`.
 <?php
 /**
- * @ApiPost(
+ * @Route(
  *     path="/api/path",
  *     summary="Post to URL",
+ * )
  *     @ApiParameter(
  *          name="body",
  *          in="body",
@@ -91,6 +92,5 @@ We follow the reference with a `Schema` layout which specifies that the `data` p
  *          )
  *     ),
  *     security={{"Bearer":{}}}
- * )
  */
 ?>

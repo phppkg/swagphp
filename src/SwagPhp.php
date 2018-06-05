@@ -33,6 +33,9 @@ class SwagPhp
     public const FORMAT_PDF = 'pdf';
     public const FORMAT_HTML = 'html';
 
+    // {var}
+    private const VAR_TPL = '{%s}';
+
     /**
      * @var array
      */
@@ -47,6 +50,20 @@ class SwagPhp
      * @var \SplObjectStorage
      */
     public $annotations;
+
+    /**
+     * @var array
+     * [name => value]
+     */
+    protected $contentVars = [];
+
+    /**
+     * @var array
+     */
+    protected $options = [
+        // enable var replace
+        'enableVar' => false,
+    ];
 
     /**
      * @param string|array $scanDirs
@@ -157,5 +174,21 @@ class SwagPhp
     public function getScanDirs(): array
     {
         return $this->scanDirs;
+    }
+
+    /**
+     * @return array
+     */
+    public function getContentVars(): array
+    {
+        return $this->contentVars;
+    }
+
+    /**
+     * @param array $contentVars
+     */
+    public function setContentVars(array $contentVars): void
+    {
+        $this->contentVars = \array_merge($this->contentVars, $contentVars);
     }
 }
