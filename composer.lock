@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39f6fe9f5f2431755b0a7d6569eae9ab",
+    "content-hash": "5f225c6d541e5eb0c3c6cad259b96309",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -58,12 +58,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/inhere/php-console.git",
-                "reference": "c9528bee7f5b9c0e85e9e1b963e7000e05271f62"
+                "reference": "f372418c77d4e12d36a1567edd824442ce6bf353"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/inhere/php-console/c9528bee7f5b9c0e85e9e1b963e7000e05271f62.zip",
-                "reference": "c9528bee7f5b9c0e85e9e1b963e7000e05271f62",
+                "url": "https://files.phpcomposer.com/files/inhere/php-console/f372418c77d4e12d36a1567edd824442ce6bf353.zip",
+                "reference": "f372418c77d4e12d36a1567edd824442ce6bf353",
                 "shasum": ""
             },
             "require": {
@@ -104,55 +104,7 @@
                 "console-color",
                 "library"
             ],
-            "time": "2018-05-30T13:27:29+00:00"
-        },
-        {
-            "name": "inhere/lite-cache",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/inhere/php-lite-cache.git",
-                "reference": "1f1c8b38cc82d32b14d58288c055d3abedb09157"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/inhere/php-lite-cache/1f1c8b38cc82d32b14d58288c055d3abedb09157.zip",
-                "reference": "1f1c8b38cc82d32b14d58288c055d3abedb09157",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0",
-                "psr/simple-cache": "^1.0",
-                "toolkit/data-parser": "^1.0"
-            },
-            "suggest": {
-                "inhere/simple-print-tool": "Very lightweight data printing tools"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Inhere\\LiteCache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "inhere",
-                    "email": "in.798@qq.com",
-                    "homepage": "http://www.yzone.net/"
-                }
-            ],
-            "description": "a simple cache client tool library of the php",
-            "homepage": "https://github.com/inhere/php-lite-cache",
-            "keywords": [
-                "library",
-                "memcache",
-                "redis"
-            ],
-            "time": "2018-05-29T16:19:27+00:00"
+            "time": "2018-06-05T05:24:39+00:00"
         },
         {
             "name": "inhere/php-validate",
@@ -198,54 +150,6 @@
                 "validate"
             ],
             "time": "2018-04-28T14:31:36+00:00"
-        },
-        {
-            "name": "psr/simple-cache",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/simple-cache.git",
-                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/php-fig/simple-cache/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b.zip",
-                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\SimpleCache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interfaces for simple caching",
-            "keywords": [
-                "cache",
-                "caching",
-                "psr",
-                "psr-16",
-                "simple-cache"
-            ],
-            "time": "2017-10-23T01:57:42+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -503,54 +407,6 @@
                 "tool"
             ],
             "time": "2018-04-30T08:03:11+00:00"
-        },
-        {
-            "name": "toolkit/data-parser",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-toolkit/data-parser.git",
-                "reference": "5a97bcd67826ccb3f01c4544d183ac7169823931"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/php-toolkit/data-parser/5a97bcd67826ccb3f01c4544d183ac7169823931.zip",
-                "reference": "5a97bcd67826ccb3f01c4544d183ac7169823931",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">7.0.0"
-            },
-            "suggest": {
-                "inhere/console": "a lightweight php console application library.",
-                "inhere/php-validate": "Very lightweight data validate tool",
-                "inhere/simple-print-tool": "Very lightweight data printing tools"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Toolkit\\DataParser\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "inhere",
-                    "email": "in.798@qq.com",
-                    "homepage": "http://www.yzone.net/"
-                }
-            ],
-            "description": "some data parser tool library of the php",
-            "homepage": "https://github.com/php-toolkit/data-parser",
-            "keywords": [
-                "library",
-                "php",
-                "tool"
-            ],
-            "time": "2018-04-30T07:02:41+00:00"
         },
         {
             "name": "toolkit/file-parse",
@@ -1074,12 +930,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ulue/Annotations.git",
-                "reference": "bbf800685bc55600cf5bbb7a17a912cc877bfeee"
+                "reference": "6ba87859cc9c11c15e503d08189ca0a52e03de56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/ulue/Annotations/bbf800685bc55600cf5bbb7a17a912cc877bfeee.zip",
-                "reference": "bbf800685bc55600cf5bbb7a17a912cc877bfeee",
+                "url": "https://files.phpcomposer.com/files/ulue/Annotations/6ba87859cc9c11c15e503d08189ca0a52e03de56.zip",
+                "reference": "6ba87859cc9c11c15e503d08189ca0a52e03de56",
                 "shasum": ""
             },
             "require": {
@@ -1109,7 +965,7 @@
             ],
             "description": "Simple and Lightweight PHP Class & Methods Annotations Reader",
             "homepage": "https://github.com/ulue/Annotations",
-            "time": "2018-06-03T16:24:26+00:00"
+            "time": "2018-06-04T16:12:41+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -1166,13 +1022,12 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "inhere/console": 20,
-        "inhere/lite-cache": 20,
         "ulue/annotations": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">7.0.0"
+        "php": ">7.1.0"
     },
     "platform-dev": []
 }

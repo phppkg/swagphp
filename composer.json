@@ -23,7 +23,6 @@
   "require": {
     "php": ">7.1.0",
     "inhere/console": "dev-master",
-    "inhere/lite-cache": "dev-master",
     "inhere/php-validate": "~2.0",
     "toolkit/file-utils": "~1.0",
     "toolkit/collection": "~1.0",

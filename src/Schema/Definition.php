@@ -18,11 +18,11 @@ class Definition extends AbstractSchema
      * The key into Swagger->definitions array.
      * @var string
      */
-    public $definition;
+    public $name;
 
     /** @inheritdoc */
     public static $_types = [
-        'definition' => 'string'
+        'name' => 'string'
     ];
 
     /** @inheritdoc */

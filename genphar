@@ -43,17 +43,21 @@ $ctrl->setCompilerConfiger(function (\Inhere\Console\Components\PharCompiler $co
         // ->setVersionFile('config/config.php')
     ;
 
-// Console 下的 Command Controller 命令类不去除注释，注释上是命令帮助信息
+    // Command 下的命令类不去除注释，注释上是命令帮助信息
     $compiler->setStripFilter(function ($file) {
         /** @var \SplFileInfo $file */
         $name = $file->getFilename();
 
-        return false === strpos($name, 'Command.php') && false === strpos($name, 'Controller.php');
+        return false === strpos($name, 'Command.php');
     });
 });
 
 try {
-  exit($ctrl->run($input->getCommand()));
-} catch (ReflectionException $e) {
-  // ...
+    exit($ctrl->run($input->getCommand()));
+} catch (\Exception $e) {
+    $message = \Toolkit\Cli\Color::apply('error', $e->getMessage());
+
+    echo sprintf("%s\nFile %s:%d\nTrace:\n%s\n",
+        $message, $e->getFile(), $e->getLine(), $e->getTraceAsString()
+    );
 }
