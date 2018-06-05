@@ -19,7 +19,7 @@ use Inhere\Console\IO\Output;
 class GenerateCommand extends Command
 {
     protected static $name = 'generate';
-    protected static $description = 'generate swaager.json/swaager.yml to markdown file(s)';
+    protected static $description = 'parse project\' php files to generate swagger document file.';
 
     public static function aliases(): array
     {
@@ -27,7 +27,11 @@ class GenerateCommand extends Command
     }
 
     /**
-     * do execute
+     * @usage {fullCommand} [--dir DIR] [--output FILE] [...]
+     * @options
+     *  -o, --output STRING     Setting the output file name(<cyan>swagger.json</cyan>)
+     * @example {fullCommand} -o public/swagger.json
+     *  {fullCommand} -o public/swagger.yml
      * @param  Input $input
      * @param  Output $output
      * @return int

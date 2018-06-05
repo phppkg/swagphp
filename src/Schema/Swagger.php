@@ -18,7 +18,7 @@ class Swagger extends AbstractSchema
      * Specifies the Swagger Specification version being used. It can be used by the Swagger UI and other clients to interpret the API listing.
      * @var string
      */
-    const $version = '2.0';
+    public $version = '2.0';
 
     /**
      * Provides metadata about the API. The metadata can be used by the clients if needed.
@@ -100,7 +100,7 @@ class Swagger extends AbstractSchema
 
     /**
      * Additional external documentation.
-     * @var ExternalDocumentation
+     * @var ExternalDocs
      */
     public $externalDocs;
 
@@ -110,12 +110,12 @@ class Swagger extends AbstractSchema
     /**
      * Save the swagger documentation to a file.
      * @param string $filename
-     * @throws Exception
+     * @throws \RuntimeException
      */
-    public function saveAs(string $filename)
+    public function saveAs(string $filename): void
     {
-        if (file_put_contents($filename, $this) === false) {
-            throw new Exception('Failed to saveAs("' . $filename . '")');
+        if (\file_put_contents($filename, $this) === false) {
+            throw new \RuntimeException('Failed to saveAs("' . $filename . '")');
         }
     }
 }

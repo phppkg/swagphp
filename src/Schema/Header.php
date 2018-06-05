@@ -154,6 +154,6 @@ class Header extends AbstractSchema
 
     /** @inheritdoc */
     public static $_parents = [
-        'Response::class,
+        Response::class,
     ];
 }

@@ -8,13 +8,39 @@ a lite swagger tool, for parse and generate swagger api docs json,yml
 
 ## Usage
 
+### Use composer
+
+- global install
+
+```bash
+composer global require toolkit/swagphp 
+```
+
+```bash
+swagphp --help
+swagphp gen -o swagger.json
+```
+
+- for current project
+
+```bash
+composer require toolkit/swagphp --dev
+```
+
+### Use phar package
+
+```bash
+wget https://github.com/php-toolkit/swagphp/releases/download/1.0.1/swagphp.phar
+mv swagphp.phar /usr/local/bin/swagphp
+swagphp --help
+```
 
 ### Usage from [docker](https://docker.com)
 
 Generate the swagger documentation to a static json file.
 
-```
-docker run -v "$PWD":/app -it sawgphp/box  swagphp --help
+```bash
+docker run -v "$PWD":/app -it sawgphp/box swagphp --help
 ```
 
 ## Annotations

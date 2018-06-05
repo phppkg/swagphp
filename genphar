@@ -25,9 +25,13 @@ $ctrl->setCompilerConfiger(function (\Inhere\Console\Components\PharCompiler $co
             'node_modules',
             'test',
             'tests',
+            'Tests',
             'example',
             'examples',
             'tmp',
+        ])
+        ->notName([
+
         ])
         ->addFile([
             'LICENSE',

@@ -26,7 +26,6 @@
     "inhere/lite-cache": "dev-master",
     "inhere/php-validate": "~2.0",
     "toolkit/file-utils": "~1.0",
-    "toolkit/file-parse": "~1.0",
     "toolkit/collection": "~1.0",
     "symfony/yaml": "~3.4",
     "erusev/parsedown": "^1.7"
