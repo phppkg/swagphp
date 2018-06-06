@@ -6,7 +6,7 @@
  * Time: 下午4:25
  */
 
-namespace SwagPhp\Analyser;
+namespace SwagPhp\Parser;
 
 use Doctrine\Common\Annotations\DocParser;
 use SwagPhp\Context;
@@ -15,9 +15,9 @@ use SwagPhp\Logger;
 /**
  * Class DoctrineAnalyser
  * - Extract php annotations from a [PHPDoc](http://en.wikipedia.org/wiki/PHPDoc) using Doctrine's DocParser.
- * @package SwagPhp\Analyser
+ * @package SwagPhp\Parser
  */
-class DoctrineAnalyser
+class DoctrineParser
 {
     /**
      * Use @SWG\* for swagger annotations (unless overwritten by a use statement).
@@ -34,6 +34,10 @@ class DoctrineAnalyser
      */
     public $docParser;
 
+    /**
+     * DoctrineAnalyser constructor.
+     * @param null $docParser
+     */
     public function __construct($docParser = null)
     {
         if ($docParser === null) {
@@ -52,7 +56,7 @@ class DoctrineAnalyser
      * @param Context $context
      * @return array Annotations
      */
-    public function fromComment($comment, $context = null): array
+    public function parseComment($comment, $context = null): array
     {
         if ($context === null) {
             $context = new Context(['comment' => $comment]);
@@ -76,17 +80,18 @@ class DoctrineAnalyser
         } catch (\Throwable $e) {
             self::$context = null;
 
-            if (preg_match('/^(.+) at position ([0-9]+) in ' . preg_quote($context, '/') . '\.$/', $e->getMessage(), $matches)) {
+            if (preg_match('/^(.+) at position ([0-9]+) in ' . \preg_quote($context, '/') . '\.$/', $e->getMessage(), $matches)) {
                 $errorMessage = $matches[1];
                 $errorPos = $matches[2];
                 $atPos = strpos($comment, '@');
                 $context->line += substr_count($comment, "\n", 0, $atPos + $errorPos);
                 $lines = explode("\n", substr($comment, $atPos, $errorPos));
-                $context->character = strlen(array_pop($lines)) + 1; // position starts at 0 character starts at 1
+                $context->character = \strlen(\array_pop($lines)) + 1; // position starts at 0 character starts at 1
                 Logger::warning(new \RuntimeException($errorMessage . ' in ' . $context, $e->getCode(), $e));
             } else {
                 Logger::warning($e);
             }
+
             return [];
         }
     }

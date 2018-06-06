@@ -8,8 +8,8 @@
 
 namespace SwagPhp;
 
-use SwagPhp\Analyser\DoctrineAnalyser;
-use SwagPhp\Analyser\PhpDocAnalyser;
+use SwagPhp\Analyser\DoctrineParser;
+use SwagPhp\Analyser\PhpDocParser;
 use SwagPhp\Dumper\HtmlDumper;
 use SwagPhp\Dumper\MarkdownDumper;
 use SwagPhp\Dumper\PDFDumper;
@@ -17,6 +17,7 @@ use SwagPhp\Schema\Swagger;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Yaml\Parser;
 use Toolkit\File\Directory;
+use Toolkit\File\FileFinder;
 
 /**
  * Class SwagPhp
@@ -41,7 +42,7 @@ class SwagPhp
     private const VAR_TPL = '{{%s}}';
 
     /**
-     * @var array
+     * @var array|string
      */
     private $scanDirs;
 
@@ -73,6 +74,10 @@ class SwagPhp
         'mode' => self::DETAILED,
         // enable var replace
         'enableVar' => false,
+        // exclude dirs
+        'excludes' => [],
+        // exclude filename
+        // 'notNames' => [],
     ];
 
     /**
@@ -114,9 +119,16 @@ class SwagPhp
         $opts = $this->options;
 
         if ($opts['mode'] === self::SIMPLE) {
-            $analyser = new PhpDocAnalyser();
+            $analyser = new PhpDocParser();
         } else {
-            $analyser = new DoctrineAnalyser();
+            $analyser = new DoctrineParser();
+        }
+
+        $finder = SwagUtil::NewFinder($this->scanDirs, $opts['exclude']);
+        $analyser = new TokenAnalyser();
+
+        foreach ($finder as $file) {
+            $analyser->fromFile($file->getPathname());
         }
 
         $this->analyzed = true;
@@ -207,9 +219,9 @@ class SwagPhp
     }
 
     /**
-     * @return array
+     * @return array|string
      */
-    public function getScanDirs(): array
+    public function getScanDirs()
     {
         return $this->scanDirs;
     }

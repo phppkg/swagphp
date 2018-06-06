@@ -30,8 +30,13 @@ class GenerateCommand extends Command
      * @usage {fullCommand} [--dir DIR] [--output FILE] [...]
      * @options
      *  -o, --output STRING     Setting the output file name(<cyan>swagger.json</cyan>)
-     * @example {fullCommand} -o public/swagger.json
-     *  {fullCommand} -o public/swagger.yml
+     *  -d, --dir STRING        Setting the parse directory(s). default is current dir.
+     *                          eg: --dir app,lib
+     *  -e, --exclude STRING    Exclude directory(s).
+     *                          eg: --exclude vendor,library/Zend
+     *  --stdout BOOL           Write to the standard output.
+     * @example {fullCommand} -o public/swagger.json --exclude vendor
+     *  {fullCommand} -o public/swagger.json
      * @param  Input $input
      * @param  Output $output
      * @return int
@@ -39,6 +44,9 @@ class GenerateCommand extends Command
     protected function execute($input, $output): int
     {
         $output->write('hello');
+
+        $exclude = $input->sameOpt(['e', 'exclude']);
+        $exclude = $exclude ? \explode(',', $exclude) : null;
 
         return 0;
     }

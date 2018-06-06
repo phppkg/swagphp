@@ -6,24 +6,26 @@
  * Time: 下午4:26
  */
 
-namespace SwagPhp\Analyser;
+namespace SwagPhp\Parser;
 
 use phpDocumentor\Reflection\DocBlockFactory;
+use SwagPhp\Context;
 
 /**
  * Class PhpDocAnalyser
  * - Extract php annotations from a [PHPDoc](http://en.wikipedia.org/wiki/PHPDoc) using phpdocumentor/reflection-docblock.
- * @package SwagPhp\Analyser
+ * @package SwagPhp\Parser
  */
-class PhpDocAnalyser
+class PhpDocParser
 {
     /**
      * @var DocBlockFactory
      */
     private $factory;
 
-
-
+    /**
+     * PhpDocParser constructor.
+     */
     public function __construct()
     {
         $this->factory  = DocBlockFactory::createInstance();
@@ -39,8 +41,14 @@ class PhpDocAnalyser
 
     }
 
-    public function readDocBlock(string $docComment)
+    public function parseComment(string $docComment,Context $context = null)
     {
+        if ($context === null) {
+            $context = new Context(['comment' => $docComment]);
+        } else {
+            $context->comment = $docComment;
+        }
+
         $dbk = $this->factory->create($docComment);
 
     }
