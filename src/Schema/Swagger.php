@@ -30,31 +30,31 @@ class Swagger extends AbstractSchema
      * The host (name or ip) serving the API. This MUST be the host only and does not include the scheme nor sub-paths. It MAY include a port. If the host is not included, the host serving the documentation is to be used (including the port). The host does not support path templating.
      * @var string
      */
-    public $host;
+    public $host = 'localhost';
 
     /**
      * The base path on which the API is served, which is relative to the host. If it is not included, the API is served directly under the host. The value MUST start with a leading slash (/). The basePath does not support path templating.
      * @var string
      */
-    public $basePath;
+    public $basePath = '/';
 
     /**
      * The transfer protocol of the API. Values MUST be from the list: "http", "https", "ws", "wss". If the schemes is not included, the default scheme to be used is the one used to access the specification.
      * @var array
      */
-    public $schemes;
+    public $schemes = ['http'];
 
     /**
      * A list of MIME types the APIs can consume. This is global to all APIs but can be overridden on specific API calls. Value MUST be as described under Mime Types.
      * @var array
      */
-    public $consumes;
+    public $consumes = ['application/json'];
 
     /**
      * A list of MIME types the APIs can produce. This is global to all APIs but can be overridden on specific API calls. Value MUST be as described under Mime Types.
      * @var array
      */
-    public $produces;
+    public $produces = ['application/json'];
 
     /**
      * The available paths and operations for the API.

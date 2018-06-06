@@ -47,7 +47,7 @@ class AbstractSchema implements \JsonSerializable, \IteratorAggregate
      */
     public function __toString()
     {
-        return \json_encode($this, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES);
+        return \json_encode($this, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
     }
 
     /**
@@ -101,6 +101,45 @@ class AbstractSchema implements \JsonSerializable, \IteratorAggregate
     {
         return new \ArrayIterator($this->all());
         // return new \ArrayObject();
+    }
+
+    /**
+     * Validate annotation tree, and log notices & warnings.
+     * @param array $parents The path of annotations above this annotation in the tree.
+     * @param array $skip (prevent stack overflow, when traversing an infinite dependency graph)
+     * @param string $ref
+     * @return boolean
+     */
+    public function validate(array $parents = [], array $skip = [], $ref = ''): bool
+    {
+        return true;
+    }
+
+    /**
+     * Return a identity for easy debugging.
+     * Example: "@SWG\Get(path="/pets")"
+     * @return string
+     */
+    public function identity(): string
+    {
+        return $this->_identity([]);
+    }
+
+    /**
+     * Helper for generating the identity()
+     * @param array $properties
+     * @return string
+     */
+    protected function _identity($properties): string
+    {
+        $fields = [];
+        foreach ($properties as $property) {
+            $value = $this->$property;
+            if ($value !== null && $value !== UNDEFINED) {
+                $fields[] = $property . '=' . (\is_string($value) ? '"' . $value . '"' : $value);
+            }
+        }
+        return '@' . str_replace('SwagPhp\\Schema\\', 'Swg\\', \get_class($this)) . '(' . \implode(',', $fields) . ')';
     }
 
     /**

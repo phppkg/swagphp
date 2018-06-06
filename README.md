@@ -79,7 +79,7 @@ docker run -v "$PWD":/app -it sawgphp/box swagphp --help
 
 /**
  * some api for user
- * @ApiTag  users  "some api for user"
+ * @Tag  users  "some api for user"
  */
 class UserController 
 {
@@ -87,27 +87,29 @@ class UserController
      * @Summary  summary message
      * @Description description message
      * @Parameter  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION  EXTRA...
-     * @Parameter  status  query  int  true  "the uesr id"  enums(1, 2, 3)
-     * @Parameter  userId  path  int  false  "the uesr id" mininum(1) maxinum(10)
-     * @Parameter  name  query  string  false  "the uesr name" minlength(5) maxlength(10)
+     * @Parameter  status  query  int  true  "the user id"  enums(1, 2, 3)
+     * @Parameter  userId  path  int  false  "the user id" min(1) max(10)
+     * @Parameter  name  query  string  false  "the user name" minLength(5) maxLength(10)
      * @Parameter  bodyData  body  UserModel  true  "the submit form data"
      * @Response   200  {array}   []UserModel
      * @Response   200  {object}   UserModel
      * @Response   403   no content
+     * @Route /users [get]
      */
-     public function indexAction() 
-     {}
+    public function getUsers() 
+    {}
      
     /**
      * summary message
      * description message
      * @Parameter  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION  EXTRA...
-     * @Parameter  status  query  int  true  "the uesr id"  
+     * @Parameter  status  query  int  true  "the user id"  
      * @Response   200  {object}   []UserModel
      * @Response   403   no content
+     * @Route /users/{id} [get]
      */
-     public function getAction() 
-     {}
+    public function get() 
+    {}
 }
 ```
 
@@ -144,7 +146,7 @@ class UserController
 {
     /**
      * @Description("description message")
-     * @Route(path="/user/index", summary="Post to URL", method="GET")
+     * @Route(path="/users", summary="Post to URL", method="GET")
      * @Parameter("username", type="string", description="The username", in="header")
      * @Parameter(name="userId", type="int", description="The user ID", in="path", required=true)
      * @Parameter(name="field1", type="int", description="The field message", in="query")
@@ -152,8 +154,8 @@ class UserController
      * @Response(200, type="array", ref="[]\App\Models\UserModel")
      * @Response(403, description="no content")
      */
-     public function indexAction() 
-     {}
+    public function getUsers() 
+    {}
 }
 ```
 
