@@ -22,6 +22,8 @@ class PhpDocAnalyser
      */
     private $factory;
 
+
+
     public function __construct()
     {
         $this->factory  = DocBlockFactory::createInstance();
@@ -40,6 +42,6 @@ class PhpDocAnalyser
     public function readDocBlock(string $docComment)
     {
         $dbk = $this->factory->create($docComment);
-        
+
     }
 }

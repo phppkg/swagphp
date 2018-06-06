@@ -23,6 +23,6 @@ $ref = new ReflectionClass(\SwagPhp\Example\SimpleMode\UserController::class);
 
 $docblock = $factory->create($ref->getDocComment());
 
-var_dump($docblock->getTagsByName('Tag'));
+var_dump($docblock->getTags());
 
-var_dump(token_get_all(file_get_contents(__DIR__ . '/UserController.php')));
+//var_dump(token_get_all(file_get_contents(__DIR__ . '/UserController.php')));

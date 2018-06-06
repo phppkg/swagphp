@@ -8,11 +8,12 @@
 
 namespace SwagPhp;
 
+use SwagPhp\Analyser\DoctrineAnalyser;
+use SwagPhp\Analyser\PhpDocAnalyser;
 use SwagPhp\Schema\Swagger;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Yaml\Parser;
 use Toolkit\File\Directory;
-use Toolkit\File\File;
 
 /**
  * Class SwagPhp
@@ -33,8 +34,8 @@ class SwagPhp
     public const FORMAT_PDF = 'pdf';
     public const FORMAT_HTML = 'html';
 
-    // {var}
-    private const VAR_TPL = '{%s}';
+    // {{var}}
+    private const VAR_TPL = '{{%s}}';
 
     /**
      * @var array
@@ -98,9 +99,9 @@ class SwagPhp
         ], $options);
 
         if ($options['mode'] === self::SIMPLE) {
-            $parser = new SimpleModeParser();
+            $parser = new PhpDocAnalyser();
         } else {
-            $parser = new DetailedModeParser();
+            $parser = new DoctrineAnalyser();
         }
 
         return $this;
@@ -141,6 +142,15 @@ class SwagPhp
             case self::FORMAT_YAML:
                 $dumper = new Dumper(2);
                 $string = $dumper->dump($this->swagger);
+                break;
+            case self::FORMAT_MD:
+
+                break;
+            case self::FORMAT_PDF:
+
+                break;
+            case self::FORMAT_HTML:
+
                 break;
             case self::FORMAT_JSON:
             default:

@@ -18,7 +18,7 @@
  *             url="http://www.apache.org/licenses/LICENSE-2.0.html"
  *         )
  *     ),
- *     @ApiExternalDocumentation(
+ *     @ApiExternalDocs(
  *         description="Find out more about Swagger",
  *         url="http://swagger.io"
  *     )

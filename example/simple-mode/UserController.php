@@ -16,6 +16,15 @@ use SwagPhp\SwagUtil;
  * description message
  * @package SwagPhp\Example\SimpleMode
  * @Tag  users  "some api for user"
+ * @AnnTag("users", des="des message")
+ * @AnnTag1(
+ *     "users",
+ *     des="des message"
+ * )
+ * @AnnTag2(
+ *     "users",
+ *     des="des message(hi)"
+ * )
  */
 class UserController
 {
