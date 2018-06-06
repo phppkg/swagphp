@@ -17,12 +17,35 @@ use SwagPhp\Schema\Swagger;
 abstract class AbstractDumper
 {
     /**
+     * @var array
+     */
+    protected $options = [
+        // Export single file. only use for 'md', 'html'
+        'single' => true
+    ];
+
+    /**
+     * @param array $options
      * @return AbstractDumper
      */
-    public static function create(): self
+    public static function create(array $options = []): self
     {
-        return new static();
+        return new static($options);
     }
 
-    abstract public function dump(Swagger $swagger);
+    /**
+     * AbstractDumper constructor.
+     * @param array $options
+     */
+    public function __construct(array $options = [])
+    {
+        $this->options = \array_merge($this->options, $options);
+    }
+
+    /**
+     * @param Swagger $swagger
+     * @param string $to Directory or file path
+     * @return mixed
+     */
+    abstract public function dump(Swagger $swagger, string $to);
 }

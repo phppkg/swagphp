@@ -145,8 +145,9 @@ class UserController
 class UserController 
 {
     /**
+     * @Summary("Post to URL")
      * @Description("description message")
-     * @Route(path="/users", summary="Post to URL", method="GET")
+     * @Route(path="/users", method="GET")
      * @Parameter("username", type="string", description="The username", in="header")
      * @Parameter(name="userId", type="int", description="The user ID", in="path", required=true)
      * @Parameter(name="field1", type="int", description="The field message", in="query")

@@ -14,10 +14,13 @@ use SwagPhp\Schema\Swagger;
  * Class PDFDumper
  * @package SwagPhp\Dumper
  */
-class PDFDumper
+class PDFDumper extends AbstractDumper
 {
-    public function dump(Swagger $swagger)
+    /**
+     * {@inheritDoc}
+     */
+    public function dump(Swagger $swagger, string $to)
     {
-
+        throw new \InvalidArgumentException('This is un-completed for export to PDF');
     }
 }

@@ -46,6 +46,11 @@ class ReflectionParser
     {
         $refClass = self::getClass($class);
 
+        if (!$refClass->hasMethod($method)) {
+            throw new \InvalidArgumentException("Method $method not exists in the $class");
+        }
+
+        return $refClass->getMethod($method);
     }
 
     /**

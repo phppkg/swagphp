@@ -14,9 +14,12 @@ use SwagPhp\Schema\Swagger;
  * Class HtmlDumper
  * @package SwagPhp\Dumper
  */
-class HtmlDumper
+class HtmlDumper extends AbstractDumper
 {
-    public function dump(Swagger $swagger)
+    /**
+     * {@inheritDoc}
+     */
+    public function dump(Swagger $swagger, string $to)
     {
 
     }

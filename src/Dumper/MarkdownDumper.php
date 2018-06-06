@@ -14,9 +14,12 @@ use SwagPhp\Schema\Swagger;
  * Class MarkdownDumper
  * @package SwagPhp\Dumper
  */
-class MarkdownDumper
+class MarkdownDumper extends AbstractDumper
 {
-    public function dump(Swagger $swagger)
+    /**
+     * {@inheritDoc}
+     */
+    public function dump(Swagger $swagger, string $to)
     {
 
     }

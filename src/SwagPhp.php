@@ -10,6 +10,9 @@ namespace SwagPhp;
 
 use SwagPhp\Analyser\DoctrineAnalyser;
 use SwagPhp\Analyser\PhpDocAnalyser;
+use SwagPhp\Dumper\HtmlDumper;
+use SwagPhp\Dumper\MarkdownDumper;
+use SwagPhp\Dumper\PDFDumper;
 use SwagPhp\Schema\Swagger;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Yaml\Parser;
@@ -43,6 +46,11 @@ class SwagPhp
     private $scanDirs;
 
     /**
+     * @var bool
+     */
+    private $analyzed = false;
+
+    /**
      * @var Swagger
      */
     public $swagger;
@@ -62,6 +70,7 @@ class SwagPhp
      * @var array
      */
     protected $options = [
+        'mode' => self::DETAILED,
         // enable var replace
         'enableVar' => false,
     ];
@@ -80,34 +89,42 @@ class SwagPhp
      * SwagPhp constructor.
      * @param string|array $scanDirs
      * @param array $options
+     * @param bool $doScan
      */
-    public function __construct($scanDirs, array $options = [])
+    public function __construct($scanDirs, array $options = [], $doScan = true)
     {
         $this->scanDirs = (array)$scanDirs;
+        $this->options = \array_merge($this->options, $options);
 
-        $this->collectAndParse($options);
+        if ($doScan) {
+            $this->analysis();
+        }
     }
 
     /**
-     * @param array $options
+     * collect php files and analysis them in the {@see self::$scanDirs}
      * @return self
      */
-    protected function collectAndParse(array $options = []): self
+    public function analysis(): self
     {
-        $options = \array_merge([
-            'mode' => self::DETAILED,
-        ], $options);
-
-        if ($options['mode'] === self::SIMPLE) {
-            $parser = new PhpDocAnalyser();
-        } else {
-            $parser = new DoctrineAnalyser();
+        if ($this->analyzed) {
+            return $this;
         }
 
+        $opts = $this->options;
+
+        if ($opts['mode'] === self::SIMPLE) {
+            $analyser = new PhpDocAnalyser();
+        } else {
+            $analyser = new DoctrineAnalyser();
+        }
+
+        $this->analyzed = true;
         return $this;
     }
 
     /**
+     * load a swagger.json
      * @param string $json
      * @return self
      */
@@ -117,6 +134,7 @@ class SwagPhp
     }
 
     /**
+     * load a swagger.yml
      * @param string $yaml
      * @return self
      */
@@ -131,42 +149,52 @@ class SwagPhp
     }
 
     /**
-     * @param string $file Will dump file name. eg 'swagger.json' 'swagger.yml'
-     * @param string $format
+     * @param string $to Will dump dir/file path. eg 'swagger.json' 'swagger.yml'
+     * @param string $format Export file format
+     * @param array $options
+     *  - single   Export single file. only use for 'md', 'html'
      * @return void
      */
-    public function saveAs(string $file, string $format = self::FORMAT_JSON): void
+    public function saveTo(string $to, string $format = self::FORMAT_JSON, array $options = []): void
     {
+        if (!$this->swagger) {
+            throw new \RuntimeException(
+                'No content can be write to file. Please run analysis or load* method before call the method.'
+            );
+        }
+
+        $content = '';
+
         switch ($format) {
             case self::FORMAT_YML:
             case self::FORMAT_YAML:
                 $dumper = new Dumper(2);
-                $string = $dumper->dump($this->swagger);
+                $content = $dumper->dump($this->swagger);
                 break;
             case self::FORMAT_MD:
-
+                MarkdownDumper::create($options)->dump($this->swagger, $to);
+                return;
                 break;
             case self::FORMAT_PDF:
-
+                PDFDumper::create()->dump($this->swagger, $to);
                 break;
             case self::FORMAT_HTML:
-
+                HtmlDumper::create($options)->dump($this->swagger, $to);
+                return;
                 break;
             case self::FORMAT_JSON:
-            default:
-                $string = \json_encode($this->swagger);
+                $content = (string)$this->swagger;
                 break;
-        }
-
-        if (!$string) {
-            throw new \RuntimeException('No content can be write to file.');
+            default:
+                throw new \InvalidArgumentException('Invalid export format: ' . $format);
+                break;
         }
 
         // ensure dir is created
-        Directory::create(\dirname($file));
+        Directory::create(\dirname($to));
 
-        if (\file_put_contents($file, $string) === false) {
-            throw new \RuntimeException('Failed to saveAs("' . $file . '")');
+        if (\file_put_contents($to, $content) === false) {
+            throw new \RuntimeException('Failed to saveAs("' . $to . '")');
         }
     }
 
