@@ -41,6 +41,10 @@ class PhpDocParser
 
     }
 
+    /**
+     * @param string $docComment
+     * @param Context|null $context
+     */
     public function parseComment(string $docComment,Context $context = null)
     {
         if ($context === null) {

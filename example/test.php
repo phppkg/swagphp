@@ -9,4 +9,4 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 
-var_dump(token_get_all(file_get_contents(__DIR__ . '/using-refs/api-spec.php')));
+print_r(token_get_all(file_get_contents(__DIR__ . '/using-refs/api-spec.php')));

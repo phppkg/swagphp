@@ -130,4 +130,61 @@ class SwagUtil
     {
         return self::reflectClass($class)->getMethods($filter);
     }
+
+    /**
+     * @param string $source
+     * @return array
+     * @link http://cn2.php.net/manual/en/function.token-get-all.php#91847
+     */
+    public static function tokenGetAll(string $source): array
+    {
+        // Get the tokens
+        $tokens = \token_get_all($source);
+        $newTokens = [];
+
+        // Split newlines into their own tokens
+        foreach ($tokens as $token) {
+            $tokenName = \is_array($token) ? $token[0] : null;
+            $tokenData = \is_array($token) ? $token[1] : $token;
+
+            // Do not split encapsed strings or multi-line comments
+            if ($tokenName === T_CONSTANT_ENCAPSED_STRING || 0 === \strpos($tokenData, '/*')) {
+                $newTokens[] = [$tokenName, $tokenData];
+                continue;
+            }
+
+            // Split the data up by newlines
+            $splitData = \preg_split(
+                '#(\r\n|\n)#',
+                $tokenData,
+                -1,
+                PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
+            );
+
+            foreach ($splitData as $data) {
+                if ($data === "\r\n" || $data === "\n") {
+                    // This is a new line token
+                    $newTokens[] = [T_NEW_LINE, $data];
+                } else {
+                    // Add the token under the original token name
+                    $newTokens[] = \is_array($token) ? [$tokenName, $data] : $data;
+                }
+            }
+        }
+
+        return $newTokens;
+    }
+
+    /**
+     * @param int $token
+     * @return string
+     */
+    public static function tokenName(int $token): string
+    {
+        if ($token === T_NEW_LINE) {
+            return 'T_NEW_LINE';
+        }
+
+        return \token_name($token);
+    }
 }

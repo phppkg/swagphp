@@ -8,8 +8,8 @@
 
 namespace SwagPhp;
 
-use SwagPhp\Analyser\DoctrineParser;
-use SwagPhp\Analyser\PhpDocParser;
+use SwagPhp\Parser\DoctrineParser;
+use SwagPhp\Parser\PhpDocParser;
 use SwagPhp\Dumper\HtmlDumper;
 use SwagPhp\Dumper\MarkdownDumper;
 use SwagPhp\Dumper\PDFDumper;
@@ -17,7 +17,6 @@ use SwagPhp\Schema\Swagger;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Yaml\Parser;
 use Toolkit\File\Directory;
-use Toolkit\File\FileFinder;
 
 /**
  * Class SwagPhp
@@ -55,6 +54,12 @@ class SwagPhp
      * @var Swagger
      */
     public $swagger;
+
+    /**
+     * Class definitions
+     * @var array
+     */
+    public $classes = [];
 
     /**
      * @var \SplObjectStorage
@@ -128,11 +133,25 @@ class SwagPhp
         $analyser = new TokenAnalyser();
 
         foreach ($finder as $file) {
-            $analyser->fromFile($file->getPathname());
+            $collection = $analyser->fromFile($file->getPathname());
+            $this->collect($collection);
         }
 
         $this->analyzed = true;
         return $this;
+    }
+
+    protected function collect(Collection $collection)
+    {
+        foreach ($collection->annotations as $annotation) {
+            $this->addAnnotation($annotation, $collection->annotations->offsetGet($annotation));
+        }
+
+        $this->classes = array_merge($this->classes, $collection->classes);
+        if ($this->swagger === null && $collection->swagger) {
+            $this->swagger = $collection->swagger;
+            $collection->target->_context->analysis = $this;
+        }
     }
 
     /**

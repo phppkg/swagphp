@@ -1,4 +1,73 @@
 <?php
+/**
+ * @ApiDefinition(
+ *   name="product_status",
+ *   type="string",
+ *   description="The status of a product",
+ *   enum={"available", "discontinued"},
+ *   default="available"
+ * )
+ */
+
+namespace SwagPhp\Example;
+
+use SwagPhp\Logger as Log;
+use SwagPhp\Context;
+
+/**
+ * @param $arg0
+ * @param int $arg1
+ * @return int
+ */
+function _test($arg0, $arg1 = 1)
+{
+    return $arg0 + $arg1;
+}
+
+/**
+ * Class _test_class
+ * @package test
+ */
+class _test_class
+{
+    /**
+     * @var string
+     */
+    private $pri;
+
+    /**
+     * @var string
+     */
+    private $pro;
+
+    /**
+     * @var Context
+     */
+    public $pub;
+
+    public function pub($arg0, $arg1 = 1)
+    {
+        // inline comment
+        return $arg0 + $arg1;
+    }
+
+    public function pro($arg0, $arg1 = 1)
+    {
+        Log::notice('test');
+
+        return $arg0 + $arg1;
+    }
+
+    public function pri($arg0, $arg1 = 1)
+    {
+        $this->pub = new Context;
+
+        return $arg0 + $arg1;
+    }
+}
+?>
+
+<?php
 
 /**
  * @ApiInfo(
@@ -51,14 +120,3 @@
 
   And although definitions are generally used for model-level schema's' they can be used for smaller things as well.
   Like a @ApiSchema, @ApiProperty or @ApiItems that is uses multiple times.
-
-<?php
-/**
- * @ApiDefinition(
- *   name="product_status",
- *   type="string",
- *   description="The status of a product",
- *   enum={"available", "discontinued"},
- *   default="available"
- * )
- */
