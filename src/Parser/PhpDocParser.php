@@ -16,7 +16,7 @@ use SwagPhp\Context;
  * - Extract php annotations from a [PHPDoc](http://en.wikipedia.org/wiki/PHPDoc) using phpdocumentor/reflection-docblock.
  * @package SwagPhp\Parser
  */
-class PhpDocParser
+class PhpDocParser implements ParserInterface
 {
     /**
      * @var DocBlockFactory

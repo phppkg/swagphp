@@ -17,7 +17,7 @@ use SwagPhp\Logger;
  * - Extract php annotations from a [PHPDoc](http://en.wikipedia.org/wiki/PHPDoc) using Doctrine's DocParser.
  * @package SwagPhp\Parser
  */
-class DoctrineParser
+class DoctrineParser implements ParserInterface
 {
     /**
      * Use @SWG\* for swagger annotations (unless overwritten by a use statement).
@@ -56,7 +56,7 @@ class DoctrineParser
      * @param Context $context
      * @return array Annotations
      */
-    public function parseComment($comment, $context = null): array
+    public function parseComment(string $comment, Context $context = null): array
     {
         if ($context === null) {
             $context = new Context(['comment' => $comment]);

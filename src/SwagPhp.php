@@ -22,16 +22,25 @@ use Toolkit\File\Directory;
  * Class SwagPhp
  * @package SwagPhp
  */
-class SwagPhp
+final class SwagPhp
 {
-    // doc comment format
+    // Doc comment format
+    // simple   `@tag val`
+    // detailed `@Tag(name="val")`
     public const SIMPLE = 'simple';
     public const DETAILED = 'detailed';
+
+    // analysis mode:
+    // 'class' - ClassAnalyser,
+    // 'file' - TokenAnalyser
+    public const MODE_FILE = 'file';
+    public const MODE_CLASS = 'class';
 
     // supported output format
     public const FORMAT_YML = 'yml';
     public const FORMAT_YAML = 'yaml';
     public const FORMAT_JSON = 'json';
+
     // extended formats
     public const FORMAT_MD = 'md';
     public const FORMAT_PDF = 'pdf';
@@ -39,16 +48,6 @@ class SwagPhp
 
     // {{var}}
     private const VAR_TPL = '{{%s}}';
-
-    /**
-     * @var array|string
-     */
-    private $scanDirs;
-
-    /**
-     * @var bool
-     */
-    private $analyzed = false;
 
     /**
      * @var Swagger
@@ -67,22 +66,36 @@ class SwagPhp
     public $annotations;
 
     /**
+     * @var array|string
+     */
+    private $scanDirs;
+
+    /**
+     * @var bool
+     */
+    private $analyzed = false;
+
+    /**
      * @var array
      * [name => value]
      */
-    protected $contentVars = [];
+    private $contentVars = [];
 
     /**
      * @var array
      */
-    protected $options = [
+    private $options = [
         'mode' => self::DETAILED,
         // enable var replace
         'enableVar' => false,
+        // analysis mode: 'class', 'file'
+        'analysisMode' => self::MODE_CLASS,
         // exclude dirs
         'excludes' => [],
         // exclude filename
         // 'notNames' => [],
+        // manual add some classes.
+        'classes' => [],
     ];
 
     /**
@@ -123,14 +136,21 @@ class SwagPhp
 
         $opts = $this->options;
 
+        // parse mode, it is by annotation type `@Tag()` or `@tag`
         if ($opts['mode'] === self::SIMPLE) {
-            $analyser = new PhpDocParser();
+            $parser = new PhpDocParser();
         } else {
-            $analyser = new DoctrineParser();
+            $parser = new DoctrineParser();
         }
 
         $finder = SwagUtil::NewFinder($this->scanDirs, $opts['exclude']);
-        $analyser = new TokenAnalyser();
+
+        // analysis mode
+        if ($opts['analysisMode'] === self::MODE_CLASS) {
+            $analyser = new ClassAnalyser($parser);
+        } else {
+            $analyser = new TokenAnalyser($parser);
+        }
 
         foreach ($finder as $file) {
             $collection = $analyser->fromFile($file->getPathname());
@@ -224,9 +244,29 @@ class SwagPhp
         // ensure dir is created
         Directory::create(\dirname($to));
 
+        // if enable var
+        if ($this->options['enableVar']) {
+            $content = \strtr($content, $this->expandVars());
+        }
+
         if (\file_put_contents($to, $content) === false) {
             throw new \RuntimeException('Failed to saveAs("' . $to . '")');
         }
+    }
+
+    /**
+     * @return array
+     */
+    private function expandVars(): array
+    {
+        $vars = [];
+
+        foreach ($this->contentVars as $var => $val) {
+            $key = \sprintf(self::VAR_TPL, $var);
+            $vars[$key] = $val;
+        }
+
+        return $vars;
     }
 
     /**

@@ -104,7 +104,9 @@ class Swagger extends AbstractSchema
      */
     public $externalDocs;
 
-    /** @inheritdoc */
+    /**
+     * {@inheritdoc}
+     */
     public static $_required = ['version', 'info', 'paths'];
 
     /**

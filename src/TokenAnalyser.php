@@ -9,19 +9,16 @@
 namespace SwagPhp;
 
 use SwagPhp\Parser\DoctrineParser;
+use SwagPhp\Parser\ParserInterface;
 use SwagPhp\Parser\PhpDocParser;
 
 /**
  * Class AbstractAnalyser
+ * - support analysis all php files by `token_get_all`
  * @package SwagPhp
  */
 class TokenAnalyser
 {
-    /**
-     * @var string base namespace for find model class. eg 'App'
-     */
-    protected $baseNamespace;
-
     /**
      * @var DoctrineParser|PhpDocParser
      */
@@ -31,6 +28,15 @@ class TokenAnalyser
      * @var SwagPhp
      */
     protected $collector;
+
+    /**
+     * Class constructor.
+     * @param ParserInterface $parser
+     */
+    public function __construct(ParserInterface $parser)
+    {
+        $this->parser = $parser;
+    }
 
     /**
      * @param string $file
@@ -56,7 +62,12 @@ class TokenAnalyser
         return $this->parseTokens($tokens, $context);
     }
 
-    public function parseTokens(array $tokens, Context $topContext)
+    /**
+     * @param array $tokens
+     * @param Context $topContext
+     * @return array
+     */
+    public function parseTokens(array $tokens, Context $topContext): array
     {
         $previous = null;
         $docComment = null;
