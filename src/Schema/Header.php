@@ -14,6 +14,8 @@ namespace SwagPhp\Schema;
  */
 class Header extends AbstractSchema
 {
+    use QuicklyCreateTrait;
+
     /**
      * @var string
      */

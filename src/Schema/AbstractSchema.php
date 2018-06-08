@@ -43,6 +43,20 @@ class AbstractSchema implements \JsonSerializable, \IteratorAggregate
     public static $_blacklist = ['_context', '_unmerged'];
 
     /**
+     * @var array Data storage
+     */
+    protected $data = [];
+
+    /**
+     * Class constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = [])
+    {
+        $this->data = $data;
+    }
+
+    /**
      * @return string Analyser
      */
     public function __toString()

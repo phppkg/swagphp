@@ -7,6 +7,7 @@
  */
 
 namespace SwagPhp\Schema;
+
 use SwagPhp\Logger;
 
 /**
@@ -16,6 +17,8 @@ use SwagPhp\Logger;
  */
 class Operation extends AbstractSchema
 {
+    use QuicklyCreateTrait;
+
     /**
      * key in the Swagger "Paths Object" for this operation
      * @var string
@@ -136,9 +139,9 @@ class Operation extends AbstractSchema
 
     /** @inheritdoc */
     public static $_nested = [
-        'Swagger\Annotations\Parameter' => ['parameters'],
-        'Swagger\Annotations\Response' => ['responses', 'response'],
-        'Swagger\Annotations\ExternalDocumentation' => 'externalDocs'
+        Parameter::class => ['parameters'],
+        Response::class => ['responses', 'response'],
+        ExternalDocs::class => 'externalDocs'
     ];
 
     /** @inheritdoc */

@@ -30,6 +30,19 @@ class Definition extends AbstractSchema
         Swagger::class,
     ];
 
+    /**
+     * @param string $name
+     * @param array $data
+     * @return $this
+     */
+    public static function create(string $name, array $data = []): self
+    {
+        $def = new self($data);
+        $def->name = $name;
+
+        return $def;
+    }
+
     public function __get($property)
     {
         if (\property_exists($this, $property)) {

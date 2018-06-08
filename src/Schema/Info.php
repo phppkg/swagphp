@@ -14,6 +14,8 @@ namespace SwagPhp\Schema;
  */
 class Info extends AbstractSchema
 {
+    use QuicklyCreateTrait;
+
     /**
      * Required. The title of the application.
      * @var string

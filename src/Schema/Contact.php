@@ -14,6 +14,8 @@ namespace SwagPhp\Schema;
  */
 class Contact extends AbstractSchema
 {
+    use QuicklyCreateTrait;
+
     /**
      * The identifying name of the contact person/organization.
      * @var string

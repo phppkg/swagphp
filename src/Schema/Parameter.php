@@ -15,6 +15,7 @@ namespace SwagPhp\Schema;
 class Parameter extends AbstractSchema
 {
     use JsonSchemaTrait;
+    use QuicklyCreateTrait;
 
     /**
      * $ref See http://json-schema.org/latest/json-schema-core.html#rfc.section.7

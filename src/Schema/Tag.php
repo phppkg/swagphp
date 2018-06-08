@@ -15,6 +15,8 @@ namespace SwagPhp\Schema;
  */
 class Tag extends AbstractSchema
 {
+    use QuicklyCreateTrait;
+
     /**
      * The name of the tag.
      * @var string
@@ -44,11 +46,11 @@ class Tag extends AbstractSchema
 
     /** @inheritdoc */
     public static $_parents = [
-        'Swagger\Annotations\Swagger'
+        Swagger::class,
     ];
 
     /** @inheritdoc */
     public static $_nested = [
-        'Swagger\Annotations\ExternalDoc' => 'externalDocs'
+        ExternalDocs::class => 'externalDocs'
     ];
 }
