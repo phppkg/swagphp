@@ -38,6 +38,17 @@ class TokenAnalyser
         $this->parser = $parser;
     }
 
+    public function analysis(array $dirs, array $opts = [])
+    {
+        $finder = SwagUtil::NewFinder($dirs, $opts['excludes']);
+
+        foreach ($finder as $file) {
+            $collection = $this->fromFile($file->getPathname());
+            $this->collect($collection);
+        }
+
+    }
+
     /**
      * @param string $file
      * @return array

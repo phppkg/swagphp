@@ -58,12 +58,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/inhere/php-console.git",
-                "reference": "f372418c77d4e12d36a1567edd824442ce6bf353"
+                "reference": "bd8af73cbeeec83e251bbe0a0d95b4494570d5f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/inhere/php-console/f372418c77d4e12d36a1567edd824442ce6bf353.zip",
-                "reference": "f372418c77d4e12d36a1567edd824442ce6bf353",
+                "url": "https://files.phpcomposer.com/files/inhere/php-console/bd8af73cbeeec83e251bbe0a0d95b4494570d5f0.zip",
+                "reference": "bd8af73cbeeec83e251bbe0a0d95b4494570d5f0",
                 "shasum": ""
             },
             "require": {
@@ -104,20 +104,20 @@
                 "console-color",
                 "library"
             ],
-            "time": "2018-06-05T05:24:39+00:00"
+            "time": "2018-07-04T02:52:26+00:00"
         },
         {
             "name": "inhere/php-validate",
-            "version": "v2.4.12",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inhere/php-validate.git",
-                "reference": "48594b8cadf8a06c446b0fe683895c531837d5f7"
+                "reference": "7d47374e07c7e96a7907930656643d7104a804f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/inhere/php-validate/48594b8cadf8a06c446b0fe683895c531837d5f7.zip",
-                "reference": "48594b8cadf8a06c446b0fe683895c531837d5f7",
+                "url": "https://files.phpcomposer.com/files/inhere/php-validate/7d47374e07c7e96a7907930656643d7104a804f7.zip",
+                "reference": "7d47374e07c7e96a7907930656643d7104a804f7",
                 "shasum": ""
             },
             "require": {
@@ -149,7 +149,7 @@
                 "library",
                 "validate"
             ],
-            "time": "2018-04-28T14:31:36+00:00"
+            "time": "2018-07-04T01:40:54+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -208,7 +208,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.11",
+            "version": "v3.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -458,16 +458,16 @@
         },
         {
             "name": "toolkit/file-utils",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-toolkit/file-utils.git",
-                "reference": "6568a02f3127f50d787df53f1c14af8df26e65fd"
+                "reference": "7f3d031127859e56d4d6bd105e0be3245ba8150f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/php-toolkit/file-utils/6568a02f3127f50d787df53f1c14af8df26e65fd.zip",
-                "reference": "6568a02f3127f50d787df53f1c14af8df26e65fd",
+                "url": "https://files.phpcomposer.com/files/php-toolkit/file-utils/7f3d031127859e56d4d6bd105e0be3245ba8150f.zip",
+                "reference": "7f3d031127859e56d4d6bd105e0be3245ba8150f",
                 "shasum": ""
             },
             "require": {
@@ -502,7 +502,7 @@
                 "php",
                 "tool"
             ],
-            "time": "2018-04-30T07:40:43+00:00"
+            "time": "2018-06-06T15:12:12+00:00"
         },
         {
             "name": "toolkit/obj-utils",
@@ -930,12 +930,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ulue/Annotations.git",
-                "reference": "6ba87859cc9c11c15e503d08189ca0a52e03de56"
+                "reference": "7e39bac144d9b46e2506ca1b7a97bf35038f4544"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/ulue/Annotations/6ba87859cc9c11c15e503d08189ca0a52e03de56.zip",
-                "reference": "6ba87859cc9c11c15e503d08189ca0a52e03de56",
+                "url": "https://files.phpcomposer.com/files/ulue/Annotations/7e39bac144d9b46e2506ca1b7a97bf35038f4544.zip",
+                "reference": "7e39bac144d9b46e2506ca1b7a97bf35038f4544",
                 "shasum": ""
             },
             "require": {
@@ -965,7 +965,7 @@
             ],
             "description": "Simple and Lightweight PHP Class & Methods Annotations Reader",
             "homepage": "https://github.com/ulue/Annotations",
-            "time": "2018-06-04T16:12:41+00:00"
+            "time": "2018-06-18T05:02:19+00:00"
         },
         {
             "name": "webmozart/assert",

@@ -85,15 +85,23 @@ final class SwagPhp
      * @var array
      */
     private $options = [
-        'mode' => self::DETAILED,
         // enable var replace
         'enableVar' => false,
+
+        // annotation tag mode:
+        //  simple   `@tag val`
+        //  detailed `@Tag(name="val")`
+        'docBlockMode' => self::SIMPLE,
+
         // analysis mode: 'class', 'file'
         'analysisMode' => self::MODE_CLASS,
+
         // exclude dirs
         'excludes' => [],
+
         // exclude filename
         // 'notNames' => [],
+
         // manual add some classes.
         'classes' => [],
     ];
@@ -106,6 +114,21 @@ final class SwagPhp
     public static function scan($scanDirs, array $options = []): self
     {
         return new self($scanDirs, $options);
+    }
+
+    /**
+     * namespaces scan
+     * @param array $nsMap please {@see \SwagPhp\ClassAnalyser::$namespaces}
+     * @param array $options
+     * @return SwagPhp
+     */
+    public static function nsScan(array $nsMap, array $options = []): self
+    {
+        $options = \array_merge($options, [
+            'analysisMode' => self::MODE_CLASS,
+        ]);
+
+        return new self($nsMap, $options);
     }
 
     /**
@@ -137,13 +160,11 @@ final class SwagPhp
         $opts = $this->options;
 
         // parse mode, it is by annotation type `@Tag()` or `@tag`
-        if ($opts['mode'] === self::SIMPLE) {
+        if ($opts['docBlockMode'] === self::SIMPLE) {
             $parser = new PhpDocParser();
         } else {
             $parser = new DoctrineParser();
         }
-
-        $finder = SwagUtil::NewFinder($this->scanDirs, $opts['exclude']);
 
         // analysis mode
         if ($opts['analysisMode'] === self::MODE_CLASS) {
@@ -152,16 +173,13 @@ final class SwagPhp
             $analyser = new TokenAnalyser($parser);
         }
 
-        foreach ($finder as $file) {
-            $collection = $analyser->fromFile($file->getPathname());
-            $this->collect($collection);
-        }
-
+        $analyser->analysis($this->scanDirs, $opts);
         $this->analyzed = true;
+
         return $this;
     }
 
-    protected function collect(Collection $collection)
+    private function collect(Collection $collection)
     {
         foreach ($collection->annotations as $annotation) {
             $this->addAnnotation($annotation, $collection->annotations->offsetGet($annotation));

@@ -28,7 +28,7 @@ class PhpDocParser implements ParserInterface
      */
     public function __construct()
     {
-        $this->factory  = DocBlockFactory::createInstance();
+        $this->factory = DocBlockFactory::createInstance();
     }
 
     public function tagHandlers(): array
@@ -44,8 +44,9 @@ class PhpDocParser implements ParserInterface
     /**
      * @param string $docComment
      * @param Context|null $context
+     * @return array
      */
-    public function parseComment(string $docComment,Context $context = null)
+    public function parseComment(string $docComment, Context $context = null): array
     {
         if ($context === null) {
             $context = new Context(['comment' => $docComment]);
@@ -55,5 +56,6 @@ class PhpDocParser implements ParserInterface
 
         $dbk = $this->factory->create($docComment);
 
+        \var_dump($dbk);
     }
 }

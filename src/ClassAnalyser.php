@@ -30,12 +30,14 @@ class ClassAnalyser
     protected $baseNamespace;
 
     /**
+     * class namespaces map
      * @var array
      * [namespace => directory path]
      */
     protected $namespaces = [];
 
     /**
+     * class list
      * @var array
      * [full class => 1]
      */
@@ -50,16 +52,44 @@ class ClassAnalyser
         $this->parser = $parser;
     }
 
+    public function analysis(array $namespaces, array $opts = [])
+    {
+        $finder = null;
+        $this->addNamespaces($namespaces);
+
+        foreach ($this->namespaces as $namespace => $dir) {
+            $finder = SwagUtil::NewFinder($dir, $opts['excludes']);
+
+            foreach ($finder as $file) {
+                $collection = $this->fromClass($namespace, $file);
+                $this->collect($collection);
+            }
+        }
+
+        if ($finder) {
+            unset($finder);
+        }
+    }
+
     /**
-     * @param string $file
+     * @param string $namespace
+     * @param \SplFileInfo $file
      * @return array
      */
-    public function fromFile(string $file): array
+    public function fromClass(string $namespace, \SplFileInfo $file): array
     {
-        $code = \file_get_contents($file);
-        $tokens = \token_get_all($code);
+        // $code = \file_get_contents($file);
+        // $tokens = \token_get_all($code);
+        // return $this->parseClass($tokens, new Context(['filename' => $file]));
 
-        return $this->parseClass($tokens, new Context(['filename' => $file]));
+        $class = $namespace . $file->getBasename('.php');
+
+        if (!\class_exists($class)) {
+            Logger::warning("class '$class' is not exists!");
+            return [];
+        }
+
+        \var_dump($namespace, $class, $file);die;
     }
 
     /**
@@ -93,7 +123,7 @@ class ClassAnalyser
             return;
         }
 
-        $this->namespaces[$namespace] = $path;
+        $this->namespaces[$namespace . '\\'] = $path;
     }
 
     /**
@@ -102,6 +132,11 @@ class ClassAnalyser
     public function addNamespaces(array $namespaces): void
     {
         foreach ($namespaces as $namespace => $path) {
+            if (!\is_string($namespace)) {
+                Logger::warning("add namespace map param error, key $namespace val $path");
+                continue;
+            }
+
             $this->addNamespace($namespace, $path);
         }
     }
@@ -113,4 +148,5 @@ class ClassAnalyser
     {
         $this->namespaces = $namespaces;
     }
+
 }
