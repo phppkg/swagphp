@@ -14,4 +14,5 @@ namespace SwagPhp\Schema;
  */
 class Items extends AbstractSchema
 {
+    use JsonSchemaTrait;
 }

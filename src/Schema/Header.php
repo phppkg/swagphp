@@ -14,8 +14,6 @@ namespace SwagPhp\Schema;
  */
 class Header extends AbstractSchema
 {
-    use QuicklyCreateTrait;
-
     /**
      * @var string
      */
@@ -151,7 +149,7 @@ class Header extends AbstractSchema
 
     /** @inheritdoc */
     public static $_nested = [
-        'Swagger\Annotations\Items' => 'items'
+        Items::class => 'items'
     ];
 
     /** @inheritdoc */

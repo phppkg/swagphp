@@ -8,15 +8,15 @@
 
 namespace SwagPhp\Schema;
 
+use Webmozart\Assert\Assert;
+
 /**
- * Class Items
+ * Class Items  A Swagger "Tag Object":
+ * @link https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#tagObject
  * @package SwagPhp\Schema
- * A Swagger "Tag Object":  https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#tagObject
  */
 class Tag extends AbstractSchema
 {
-    use QuicklyCreateTrait;
-
     /**
      * The name of the tag.
      * @var string
@@ -53,4 +53,24 @@ class Tag extends AbstractSchema
     public static $_nested = [
         ExternalDocs::class => 'externalDocs'
     ];
+
+    public static function createFromPhpDoc(string $docBody): self
+    {
+        Assert::notEmpty($docBody);
+
+        $des = '';
+        $parts = preg_split('/\s+/Su', $docBody, 2);
+
+        if (isset($parts[1])) {
+            $des = \trim($parts[1], '"\'');
+        }
+
+        $self = new static([
+            'name' => $parts[0],
+            'description' => $des
+        ]);
+        //$self->rawBody = $docBody;
+
+        return $self;
+    }
 }

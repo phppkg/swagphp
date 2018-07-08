@@ -17,8 +17,6 @@ use SwagPhp\Logger;
  */
 class Operation extends AbstractSchema
 {
-    use QuicklyCreateTrait;
-
     /**
      * key in the Swagger "Paths Object" for this operation
      * @var string
@@ -33,7 +31,8 @@ class Operation extends AbstractSchema
     public $method;
 
     /**
-     * A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier.
+     * A list of tags for API documentation control.
+     * Tags can be used for logical grouping of operations by resources or any other qualifier.
      * @var array
      */
     public $tags;
@@ -139,6 +138,7 @@ class Operation extends AbstractSchema
 
     /** @inheritdoc */
     public static $_nested = [
+        Tag::class => ['tags'],
         Parameter::class => ['parameters'],
         Response::class => ['responses', 'response'],
         ExternalDocs::class => 'externalDocs'

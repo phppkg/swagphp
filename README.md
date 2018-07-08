@@ -76,7 +76,6 @@ docker run -v "$PWD":/app -it sawgphp/box swagphp --help
 #### api operations
 
 ```php
-
 /**
  * some api for user
  * @Tag  users  "some api for user"

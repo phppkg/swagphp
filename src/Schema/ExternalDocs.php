@@ -15,16 +15,17 @@ namespace SwagPhp\Schema;
 class ExternalDocs extends AbstractSchema
 {
     /**
-     * A short description of the target documentation. GFM syntax can be used for rich text representation.
-     * @var string
-     */
-    public $description;
-
-    /**
      * The URL for the target documentation.
      * @var string
      */
     public $url;
+
+    /**
+     * A short description of the target documentation.
+     * GFM syntax can be used for rich text representation.
+     * @var string
+     */
+    public $description;
 
     /** @inheritdoc */
     public static $_types = [

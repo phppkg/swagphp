@@ -42,7 +42,7 @@ class Swagger extends AbstractSchema
      * The transfer protocol of the API. Values MUST be from the list: "http", "https", "ws", "wss". If the schemes is not included, the default scheme to be used is the one used to access the specification.
      * @var array
      */
-    public $schemes = ['http'];
+    public $schemes = ['http', 'https'];
 
     /**
      * A list of MIME types the APIs can consume. This is global to all APIs but can be overridden on specific API calls. Value MUST be as described under Mime Types.

@@ -29,13 +29,14 @@ use SwagPhp\SwagUtil;
 class UserController
 {
     /**
+     * @Tag user
      * @Summary  summary message
      * @Description description message
-     * @Parameter  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION  EXTRA...
-     * @Parameter  status  query  int  true  "the user id"  enums(1, 2, 3)
-     * @Parameter  userId  path  int  false  "the user id" min(1) max(10)
-     * @Parameter  name  query  string  false  "the user name" minLength(5) maxLength(10)
-     * @Parameter  bodyData  body  User  true  "the submit form data"
+     * @ApiParam  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION  EXTRA...
+     * @ApiParam  status  query  int  true  "the user id"  enums(1, 2, 3)
+     * @ApiParam  userId  path  int  false  "the user id" min(1) max(10)
+     * @ApiParam  name  query  string  false  "the user name" minLength(5) maxLength(10)
+     * @ApiParam  bodyData  body  User  true  "the submit form data"
      * @Response   200  {array}   []User
      * @Response   200  {object}   User
      * @Response   403   no content

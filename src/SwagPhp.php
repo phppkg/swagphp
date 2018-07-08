@@ -173,13 +173,13 @@ final class SwagPhp
             $analyser = new TokenAnalyser($parser);
         }
 
-        $analyser->analysis($this->scanDirs, $opts);
+        $analyser->analysis($this->scanDirs, $this, $opts);
         $this->analyzed = true;
 
         return $this;
     }
 
-    private function collect(Collection $collection)
+    public function collect(Collection $collection)
     {
         foreach ($collection->annotations as $annotation) {
             $this->addAnnotation($annotation, $collection->annotations->offsetGet($annotation));

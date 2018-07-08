@@ -49,6 +49,11 @@ class DoctrineParser implements ParserInterface
         $this->docParser = $docParser;
     }
 
+    public function readClass(string $class)
+    {
+
+    }
+
     /**
      * Use doctrine to parse the comment block and return the detected annotations.
      *

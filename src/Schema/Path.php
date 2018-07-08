@@ -9,7 +9,8 @@
 namespace SwagPhp\Schema;
 
 /**
- * Class Path
+ * Class Path - Path Item Object
+ * @link https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#path-item-object
  * @package SwagPhp\Schema
  */
 class Path extends AbstractSchema
@@ -28,43 +29,43 @@ class Path extends AbstractSchema
 
     /**
      * A definition of a GET operation on this path.
-     * @var Get
+     * @var Operation|Get
      */
     public $get;
 
     /**
      * A definition of a PUT operation on this path.
-     * @var Put
+     * @var Operation|Put
      */
     public $put;
 
     /**
      * A definition of a POST operation on this path.
-     * @var Post
+     * @var Operation|Post
      */
     public $post;
 
     /**
      * A definition of a DELETE operation on this path.
-     * @var Delete
+     * @var Operation|Delete
      */
     public $delete;
 
     /**
      * A definition of a OPTIONS operation on this path.
-     * @var Options
+     * @var Operation|Options
      */
     public $options;
 
     /**
      * A definition of a HEAD operation on this path.
-     * @var Head
+     * @var Operation|Head
      */
     public $head;
 
     /**
      * A definition of a PATCH operation on this path.
-     * @var Patch
+     * @var Operation|Patch
      */
     public $patch;
 

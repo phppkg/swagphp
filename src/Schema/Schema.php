@@ -106,7 +106,7 @@ class Schema extends AbstractSchema
 
     /**
      * Additional external documentation for this schema.
-     * @var ExternalDoc
+     * @var ExternalDocs
      */
     public $externalDocs;
 
@@ -151,7 +151,7 @@ class Schema extends AbstractSchema
     public static $_nested = [
         Items::class => 'items',
         Property::class => ['properties', 'property'],
-        ExternalDoc::class => 'externalDocs',
+        ExternalDocs::class => 'externalDocs',
         Xml::class => 'xml'
     ];
 

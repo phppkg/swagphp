@@ -20,6 +20,11 @@ use SwagPhp\Parser\PhpDocParser;
 class ClassAnalyser
 {
     /**
+     * @var array
+     */
+    private static $reflections = [];
+
+    /**
      * @var DoctrineParser|PhpDocParser
      */
     protected $parser;
@@ -52,7 +57,7 @@ class ClassAnalyser
         $this->parser = $parser;
     }
 
-    public function analysis(array $namespaces, array $opts = [])
+    public function analysis(array $namespaces, SwagPhp $manager,array $opts = [])
     {
         $finder = null;
         $this->addNamespaces($namespaces);
@@ -62,7 +67,7 @@ class ClassAnalyser
 
             foreach ($finder as $file) {
                 $collection = $this->fromClass($namespace, $file);
-                $this->collect($collection);
+                $manager->collect($collection);
             }
         }
 
@@ -89,7 +94,38 @@ class ClassAnalyser
             return [];
         }
 
-        \var_dump($namespace, $class, $file);die;
+        $info = [
+            'class' => $class,
+            'file' => $file->getRealPath(),
+        ];
+
+        $this->parser->readClass($class);
+
+        \var_dump($namespace, $class);die;
+    }
+
+    /**
+     * @param string $class
+     * @return \ReflectionClass
+     * @throws \ReflectionException
+     */
+    public static function getReflection(string $class): \ReflectionClass
+    {
+        return self::createReflection($class);
+    }
+
+    /**
+     * @param string $class
+     * @return \ReflectionClass
+     * @throws \ReflectionException
+     */
+    public static function createReflection(string $class): \ReflectionClass
+    {
+        if (!isset(self::$reflections[$class])) {
+            self::$reflections[$class] = new \ReflectionClass($class);
+        }
+
+        return self::$reflections[$class];
     }
 
     /**

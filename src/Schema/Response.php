@@ -68,7 +68,7 @@ class Response extends AbstractSchema
 
     /** @inheritdoc */
     public static $_parents = [
-        // 'Swagger\Annotations\Operation',
+        Operation::class,
         // 'Swagger\Annotations\Get',
         Swagger::class,
     ];

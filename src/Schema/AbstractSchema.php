@@ -14,6 +14,8 @@ namespace SwagPhp\Schema;
  */
 class AbstractSchema implements \JsonSerializable, \IteratorAggregate
 {
+    use QuicklyCreateTrait;
+
     /**
      * @var array there are required properties
      */
@@ -29,6 +31,12 @@ class AbstractSchema implements \JsonSerializable, \IteratorAggregate
      * @var array
      */
     public static $_types = [];
+
+    /**
+     * @var array
+     * [tag class => prop name in the class]
+     */
+    public static $_nested = [];
 
     /**
      * Reverse mapping of $_nested with the allowed parent annotations.

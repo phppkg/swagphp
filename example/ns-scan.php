@@ -4,6 +4,10 @@
 $loader = require dirname(__DIR__) . '/vendor/autoload.php';
 $loader->addPsr4('SwagPhp\Example\SimpleMode\\', __DIR__ . '/simple-mode');
 
-\SwagPhp\SwagPhp::nsScan([
+$swg = \SwagPhp\SwagPhp::nsScan([
     'SwagPhp\Example\SimpleMode\\' => __DIR__ . '/simple-mode'
 ]);
+
+
+
+// --ns "app:\App"
