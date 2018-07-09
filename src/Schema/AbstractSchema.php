@@ -8,6 +8,8 @@
 
 namespace SwagPhp\Schema;
 
+use Toolkit\ObjUtil\Obj;
+
 /**
  * Class AbstractSchema
  * @package SwagPhp\Schema
@@ -61,7 +63,8 @@ class AbstractSchema implements \JsonSerializable, \IteratorAggregate
      */
     public function __construct(array $data = [])
     {
-        $this->data = $data;
+        // $this->data = $data;
+        Obj::init($this, $data);
     }
 
     /**

@@ -29,7 +29,7 @@ use SwagPhp\SwagUtil;
 class UserController
 {
     /**
-     * @Tag user
+     * @Tags user
      * @Summary  summary message
      * @Description description message
      * @ApiParam  FIELD  POSITION  TYPE  REQUIRED  DESCRIPTION  EXTRA...
@@ -37,6 +37,8 @@ class UserController
      * @ApiParam  userId  path  int  false  "the user id" min(1) max(10)
      * @ApiParam  name  query  string  false  "the user name" minLength(5) maxLength(10)
      * @ApiParam  bodyData  body  User  true  "the submit form data"
+     * @ApiParam  bodyData  body  Blog(title,userId)  true  "the submit form data"
+     * @ApiParam  ref("#/parameters/api_version_in_query")
      * @Response   200  {array}   []User
      * @Response   200  {object}   User
      * @Response   403   no content

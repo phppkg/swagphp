@@ -1,13 +1,13 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "UEM - User extension information module for social APP.",
+        "title": "User extension information api.",
         "license": {
             "name": "MIT"
         },
         "version": "1.0.0"
     },
-    "host": "api-uem.dev",
+    "host": "api.dev",
     "basePath": "/",
     "schemes": [
         "http",

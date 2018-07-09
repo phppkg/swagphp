@@ -7,6 +7,7 @@
  */
 
 namespace SwagPhp\Schema;
+use Webmozart\Assert\Assert;
 
 /**
  * Class Definition
@@ -20,6 +21,11 @@ class Definition extends AbstractSchema
      */
     public $name;
 
+    /**
+     * @var Schema
+     */
+    public $schema;
+
     /** @inheritdoc */
     public static $_types = [
         'name' => 'string'
@@ -31,16 +37,30 @@ class Definition extends AbstractSchema
     ];
 
     /**
-     * @param string $name
-     * @param array $data
-     * @return $this
+     * @param string $docBody
+     * @return self
      */
-    public static function create(string $name, array $data = []): self
+    public static function createFromPhpDoc(string $docBody): self
     {
-        $def = new self($data);
-        $def->name = $name;
+        Assert::notEmpty($docBody);
 
-        return $def;
+        $des = '';
+        $parts = \preg_split('/\s+/Su', $docBody, 2);
+
+        if (isset($parts[1])) {
+            $des = \trim($parts[1], '"\'');
+        }
+
+        $schema = new Schema([
+            'description' => $des
+        ]);
+
+        $self = new static([
+            'name' => $parts[0],
+            'schema' => $schema,
+        ]);
+
+        return $self;
     }
 
     public function __get($property)

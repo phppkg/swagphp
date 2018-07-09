@@ -36,6 +36,8 @@ class DocTags
     const XML = 'Xml';
 
     // no schema
+    const TAGS = 'Tags'; // for api method
+    const API_PARAM = 'ApiParam'; // for api method
     const DESCRIPTION = 'Description';
 
     // tag to schema

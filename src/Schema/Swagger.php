@@ -110,6 +110,20 @@ class Swagger extends AbstractSchema
     public static $_required = ['version', 'info', 'paths'];
 
     /**
+     * Swagger constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = [])
+    {
+        parent::__construct($data);
+
+        if (!$this->info) {
+            $this->info = new Info();
+        }
+
+    }
+
+    /**
      * Save the swagger documentation to a file.
      * @param string $filename
      * @throws \RuntimeException

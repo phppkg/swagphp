@@ -23,7 +23,6 @@ trait QuicklyCreateTrait
     public static function create(array $data = []): self
     {
         $self = new self();
-
         return Obj::init($self, $data);
     }
 }

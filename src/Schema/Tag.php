@@ -54,12 +54,16 @@ class Tag extends AbstractSchema
         ExternalDocs::class => 'externalDocs'
     ];
 
+    /**
+     * @param string $docBody
+     * @return Tag
+     */
     public static function createFromPhpDoc(string $docBody): self
     {
         Assert::notEmpty($docBody);
 
         $des = '';
-        $parts = preg_split('/\s+/Su', $docBody, 2);
+        $parts = \preg_split('/\s+/Su', $docBody, 2);
 
         if (isset($parts[1])) {
             $des = \trim($parts[1], '"\'');
@@ -69,7 +73,6 @@ class Tag extends AbstractSchema
             'name' => $parts[0],
             'description' => $des
         ]);
-        //$self->rawBody = $docBody;
 
         return $self;
     }

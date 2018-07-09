@@ -11,6 +11,7 @@ namespace SwagPhp;
 use SwagPhp\Parser\DoctrineParser;
 use SwagPhp\Parser\ParserInterface;
 use SwagPhp\Parser\PhpDocParser;
+use SwagPhp\Schema\Swagger;
 
 /**
  * Class ClassAnalyser
@@ -19,11 +20,6 @@ use SwagPhp\Parser\PhpDocParser;
  */
 class ClassAnalyser
 {
-    /**
-     * @var array
-     */
-    private static $reflections = [];
-
     /**
      * @var DoctrineParser|PhpDocParser
      */
@@ -49,6 +45,11 @@ class ClassAnalyser
     protected $classes = [];
 
     /**
+     * @var Swagger
+     */
+    private $swag;
+
+    /**
      * Class constructor.
      * @param ParserInterface $parser
      */
@@ -61,6 +62,8 @@ class ClassAnalyser
     {
         $finder = null;
         $this->addNamespaces($namespaces);
+
+        $this->swag = new Swagger();
 
         foreach ($this->namespaces as $namespace => $dir) {
             $finder = SwagUtil::NewFinder($dir, $opts['excludes']);
@@ -83,9 +86,8 @@ class ClassAnalyser
      */
     public function fromClass(string $namespace, \SplFileInfo $file): array
     {
-        // $code = \file_get_contents($file);
-        // $tokens = \token_get_all($code);
-        // return $this->parseClass($tokens, new Context(['filename' => $file]));
+        // load file
+        $this->scopedRequire($file->getPathname());
 
         $class = $namespace . $file->getBasename('.php');
 
@@ -99,33 +101,14 @@ class ClassAnalyser
             'file' => $file->getRealPath(),
         ];
 
-        $this->parser->readClass($class);
+        $this->parser->readClass($class, $this->swag);
 
         \var_dump($namespace, $class);die;
     }
 
-    /**
-     * @param string $class
-     * @return \ReflectionClass
-     * @throws \ReflectionException
-     */
-    public static function getReflection(string $class): \ReflectionClass
+    protected function scopedRequire(string $class)
     {
-        return self::createReflection($class);
-    }
-
-    /**
-     * @param string $class
-     * @return \ReflectionClass
-     * @throws \ReflectionException
-     */
-    public static function createReflection(string $class): \ReflectionClass
-    {
-        if (!isset(self::$reflections[$class])) {
-            self::$reflections[$class] = new \ReflectionClass($class);
-        }
-
-        return self::$reflections[$class];
+        require_once $class;
     }
 
     /**
